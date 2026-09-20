@@ -188,8 +188,8 @@
           "id": "R16-M8",
           "a": "R32-M15",
           "b": "R32-M16",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 3,
+          "scoreB": 21
         }
       ]
     },
