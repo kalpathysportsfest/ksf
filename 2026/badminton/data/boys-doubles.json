@@ -23,15 +23,15 @@
           "id": "SF1",
           "a": "Haridath & Vishnu",
           "b": "Subru & Ayush",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 4
         },
         {
           "id": "SF2",
           "a": "Sriniketh & Viresh",
           "b": "Thanmay & Rishikesh G",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 10
         }
       ]
     },
