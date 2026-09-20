@@ -146,8 +146,8 @@
           "id": "R16-M2",
           "a": "R32-M3",
           "b": "R32-M4",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 1,
+          "scoreB": 21
         },
         {
           "id": "R16-M3",
