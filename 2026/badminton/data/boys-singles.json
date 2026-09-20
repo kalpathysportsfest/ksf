@@ -218,15 +218,15 @@
           "id": "SF1",
           "a": "QF1",
           "b": "QF2",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 5
         },
         {
           "id": "SF2",
           "a": "QF3",
           "b": "QF4",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 6,
+          "scoreB": 21
         }
       ]
     },
