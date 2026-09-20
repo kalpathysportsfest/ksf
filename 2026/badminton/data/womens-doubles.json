@@ -21,7 +21,7 @@
       "teams": [
         "Shyama Suryanarayanan & Akshaya",
         "Gowri Subramanian & Sri Dhanya",
-        "Sruthi M B & Bhavya N"
+        "Gayathri K & Bhavya N"
       ],
       "matches": [
         {
@@ -34,14 +34,14 @@
         {
           "id": "GA-R1-M2",
           "a": "Gowri Subramanian & Sri Dhanya",
-          "b": "Sruthi M B & Bhavya N",
+          "b":  "Gayathri K & Bhavya N",
           "scoreA": null,
           "scoreB": null
         },
         {
           "id": "GA-R1-M3",
           "a": "Shyama Suryanarayanan & Akshaya",
-          "b": "Sruthi M B & Bhavya N",
+          "b": "Gayathri K & Bhavya N",
           "scoreA": null,
           "scoreB": null
         },
@@ -54,14 +54,14 @@
         },
         {
           "id": "GA-R2-M2",
-          "a": "Sruthi M B & Bhavya N",
+          "a": "Gayathri K & Bhavya N",
           "b": "Gowri Subramanian & Sri Dhanya",
           "scoreA": null,
           "scoreB": null
         },
         {
           "id": "GA-R2-M3",
-          "a": "Sruthi M B & Bhavya N",
+          "a": "Gayathri & Bhavya N",
           "b": "Shyama Suryanarayanan & Akshaya",
           "scoreA": null,
           "scoreB": null
