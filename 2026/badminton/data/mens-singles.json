@@ -85,8 +85,8 @@
           "id": "R32-M10",
           "a": "Sarath",
           "b": "Santhosh",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 0,
+          "scoreB": 21
         },
         {
           "id": "R32-M11",
