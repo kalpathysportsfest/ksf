@@ -103,8 +103,8 @@
           "id": "QF4",
           "a": "R16-M7",
           "b": "R16-M8",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 11
         }
       ]
     },
