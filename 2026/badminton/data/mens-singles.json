@@ -22,8 +22,8 @@
           "id": "R32-M1",
           "a": "Ramaswamy Mathur",
           "b": "VENKATESH P H",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 0
         },
         {
           "id": "R32-M2",
@@ -71,7 +71,7 @@
           "id": "R32-M8",
           "a": "V A SURYANARAYANAN",
           "b": "Karthik",
-          "scoreA": 15,
+          "scoreA": 21,
           "scoreB": 0
         },
         {
@@ -113,15 +113,15 @@
           "id": "R32-M14",
           "a": "Venkitaramanan k.v.",
           "b": "Sreenivasan T H",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 6,
+          "scoreB": 21
         },
         {
           "id": "R32-M15",
           "a": "Anand S",
           "b": "PRADEEP SANKAR .P",
           "scoreA": 0,
-          "scoreB": 15
+          "scoreB": 21
         },
         {
           "id": "R32-M16",
