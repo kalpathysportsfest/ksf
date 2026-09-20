@@ -64,15 +64,15 @@
           "id": "R1-M7",
           "a": "Varsha Sriram",
           "b": "Poornalakshmi",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          "scoreB": 0
         },
         {
           "id": "R1-M8",
           "a": "Rajalakshmy Anand",
           "b": "Akshaya K",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 2,
+          "scoreB": 15
         }
       ]
     },
