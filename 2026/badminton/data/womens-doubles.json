@@ -63,8 +63,8 @@
           "id": "GA-R2-M3",
           "a": "Akshaya K & Bhavya N",
           "b": "Shyama Suryanarayanan & Akshaya",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 9,
+          "scoreB": 15
         }
       ]
     },
@@ -81,15 +81,15 @@
           "id": "GB-R1-M1",
           "a": "Bageerathy N H & Gayathri",
           "b": "Keerthana Venkataraman & Mahalakshmi",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          "scoreB": 2
         },
         {
           "id": "GB-R1-M2",
           "a": "Keerthana Venkataraman & Mahalakshmi",
           "b": "kalpana Karpakam & Rajalakshmi",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 8,
+          "scoreB": 15
         },
         {
           "id": "GB-R1-M3",
