@@ -207,8 +207,8 @@
           "id": "QF2",
           "a": "R16-M3",
           "b": "R16-M4",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 8,
+          "scoreB": 15
         },
         {
           "id": "QF3",
