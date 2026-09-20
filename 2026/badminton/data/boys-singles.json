@@ -237,8 +237,8 @@
           "id": "FINAL",
           "a": "SF1",
           "b": "SF2",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 10,
+          "scoreB": 21
         },
         {
           "id": "3RD-PLACE",
