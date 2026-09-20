@@ -259,8 +259,8 @@
           "id": "3RD-PLACE",
           "a": "SF1:loser",
           "b": "SF2:loser",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 11,
+          "scoreB": 21
         }
       ]
     }
