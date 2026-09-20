@@ -28,8 +28,8 @@
           "id": "GA-R1-M1",
           "a": "Shyama Suryanarayanan & Akshaya",
           "b": "Gowri Subramanian & Sri Dhanya",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 0,
+          "scoreB": 15
         },
         {
           "id": "GA-R1-M2",
@@ -42,15 +42,15 @@
           "id": "GA-R1-M3",
           "a": "Shyama Suryanarayanan & Akshaya",
           "b": "Akshaya K & Bhavya N",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 5,
+          "scoreB": 15
         },
         {
           "id": "GA-R2-M1",
           "a": "Gowri Subramanian & Sri Dhanya",
           "b": "Shyama Suryanarayanan & Akshaya",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          "scoreB": 2
         },
         {
           "id": "GA-R2-M2",
@@ -102,8 +102,8 @@
           "id": "GB-R2-M1",
           "a": "Keerthana Venkataraman & Mahalakshmi",
           "b": "Bageerathy N H & Gayathri",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 8,
+          "scoreB": 15
         },
         {
           "id": "GB-R2-M2",
