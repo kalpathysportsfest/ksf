@@ -138,43 +138,43 @@
           "id": "R16-M3",
           "a": "G1-M5",
           "b": "Subru",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 4,
+          "scoreB": 15
         },
         {
           "id": "R16-M4",
           "a": "G1-M4",
           "b": "G2-M3",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          "scoreB": 7
         },
         {
           "id": "R16-M5",
           "a": "G1-M1",
           "b": "G2-M2",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 5,
+          "scoreB": 15
         },
         {
           "id": "R16-M6",
           "a": "G1-M6",
           "b": "G2-M6",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          "scoreB": 12
         },
         {
           "id": "R16-M7",
           "a": "Rishi Praveen",
           "b": "G2-M5",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          "scoreB": 13
         },
         {
           "id": "R16-M8",
           "a": "G1-M3",
           "b": "Sriniketh. S",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA":5,
+          "scoreB": 15
         }
       ]
     },
