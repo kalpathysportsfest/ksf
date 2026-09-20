@@ -124,15 +124,15 @@
           "id": "R16-M1",
           "a": "G1-M7",
           "b": "G2-M4",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 8,
+          "scoreB": 15
         },
         {
           "id": "R16-M2",
           "a": "G1-M2",
           "b": "G2-M1",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          "scoreB": 6
         },
         {
           "id": "R16-M3",
