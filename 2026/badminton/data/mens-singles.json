@@ -240,8 +240,8 @@
           "id": "SF2",
           "a": "QF3",
           "b": "QF4",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 22,
+          "scoreB": 23
         }
       ]
     },
