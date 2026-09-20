@@ -29,8 +29,8 @@
           "id": "G1-M2",
           "a": "Sreeram",
           "b": "Thanmay",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          "scoreB": 10
         },
         {
           "id": "G1-M3",
