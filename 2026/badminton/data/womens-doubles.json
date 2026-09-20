@@ -130,8 +130,8 @@
           "id": "FINAL",
           "a": "GA",
           "b": "GB",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 15,
+          ",scoreB": 9
         }
       ]
     }
