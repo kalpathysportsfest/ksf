@@ -77,8 +77,8 @@
           "id": "G2-M1",
           "a": "Vaibhav",
           "b": "Akhilesh",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 10,
+          "scoreB": 15
         },
         {
           "id": "G2-M2",
