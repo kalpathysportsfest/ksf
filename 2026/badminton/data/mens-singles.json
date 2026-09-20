@@ -41,10 +41,10 @@
         },
         {
           "id": "R32-M4",
-          "a": "Vichu Grp",
+          "a": "Parameswaran",
           "b": "Prasad Parameswaran",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 0,
+          "scoreB": 21
         },
         {
           "id": "R32-M5",
@@ -55,7 +55,7 @@
         },
         {
           "id": "R32-M6",
-          "a": "Parameswaran",
+          "a": "Vichu GRP",
           "b": "Suraj",
           "scoreA": null,
           "scoreB": null
@@ -64,8 +64,8 @@
           "id": "R32-M7",
           "a": "Aswath G",
           "b": "Gokul Iyer",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 14
         },
         {
           "id": "R32-M8",
@@ -78,8 +78,8 @@
           "id": "R32-M9",
           "a": "Narayanan CK",
           "b": "Arjun LK",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 0
         },
         {
           "id": "R32-M10",
@@ -92,22 +92,22 @@
           "id": "R32-M11",
           "a": "Ashwin PK",
           "b": "Raman",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 0
         },
         {
           "id": "R32-M12",
           "a": "GANAPATHI TV",
           "b": "Sankar R",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 0,
+          "scoreB": 21
         },
         {
           "id": "R32-M13",
           "a": "Sriram Tharekkad (Venkiteswaran)",
           "b": "Arun",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 0
         },
         {
           "id": "R32-M14",
