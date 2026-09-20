@@ -115,8 +115,8 @@
           "id": "SF1",
           "a": "QF1",
           "b": "QF2",
-          "scoreA": null,
-          "scoreB": null
+          "scoreA": 21,
+          "scoreB": 14
         },
         {
           "id": "SF2",
