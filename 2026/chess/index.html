@@ -1,85 +1,857 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kalpathy Sports Fest 2026 · Chess Championships</title>
-  <meta name="description" content="Schedules, fixtures, leaderboards, and results for KSF 2026 Chess Championships (Under-18 & Above-18 categories)." />
+  <meta charset="UTF-8">
+  <title>KSF 2026 — Chess Fixtures</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official chess tournament fixtures, knockout bracket, schedules, and live results for Kalpathy Sports Fest 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            heading: ['Oswald', 'sans-serif'],
-            sans: ['"Source Sans 3"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
   <style>
-    body {
-      background-color: #050706;
-      color: #f6f3ea;
-      font-family: 'Source Sans 3', sans-serif;
+    :root {
+      --bg: #040608;
+      --surface: #0a0f18;
+      --card: #0d1422;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --gold: #ff7a00;
+      --gold-soft: rgba(255, 122, 0, 0.12);
+      --gold-strong: #ff8a1a;
+      --ink: #ffffff;
+      --muted: #9aa4b2;
+      --hair: rgba(255, 255, 255, 0.08);
+      --hair-strong: rgba(255, 255, 255, 0.18);
+      --win: #ff7a00;
+      --win-bg: rgba(255, 122, 0, 0.16);
+      --win-border: rgba(255, 122, 0, 0.4);
     }
-    .font-heading { font-family: 'Oswald', sans-serif; }
-    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color-scheme: dark;
+      min-height: 100vh;
+    }
+    h1, h2, h3, .heading {
+      font-family: 'Oswald', Impact, sans-serif;
+      letter-spacing: .01em;
+      text-transform: uppercase;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    
+    .hero {
+      background: #030507;
+      border-bottom: 1px solid var(--hair);
+      padding: 24px 20px 20px;
+    }
+    .hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .logo-wrap {
+      width: 68px;
+      height: 68px;
+      flex: 0 0 68px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(255, 122, 0, 0.08);
+      border: 1px solid rgba(255, 122, 0, 0.35);
+      font-size: 34px;
+      position: relative;
+    }
+    .hero-copy h1 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      line-height: 1.1;
+      color: #ffffff;
+      margin-top: 2px;
+    }
+    .kicker {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: .12em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 13.5px;
+      margin-top: 4px;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 600;
+      background: rgba(79, 174, 125, 0.12);
+      border: 1px solid rgba(79, 174, 125, 0.35);
+      color: #79dca6;
+    }
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4fae7d;
+      box-shadow: 0 0 6px #4fae7d;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+    .location-text {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      padding: 8px 24px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--hair-strong);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .15s ease;
+    }
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .tab-btn.active {
+      background: #111d2e;
+      border-color: #3b82f6;
+      color: #60a5fa;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
+    }
+
+    .cat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .cat-title {
+      font-size: clamp(26px, 3.5vw, 36px);
+      line-height: 1;
+      color: #fff;
+    }
+    .cat-desc {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .cat-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .format-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 122, 0, 0.12);
+      border: 1px solid rgba(255, 122, 0, 0.35);
+      color: #ff9d3b;
+      letter-spacing: .04em;
+    }
+    .status-badge-blue {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      color: #93c5fd;
+      letter-spacing: .05em;
+    }
+
+    .rules-card {
+      background: #090e17;
+      border: 1px solid var(--hair);
+      border-radius: 10px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .rules-toggle {
+      width: 100%;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .rules-toggle:hover { background: rgba(255, 255, 255, 0.02); }
+    .rules-body {
+      padding: 0 16px 14px;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      display: none;
+    }
+    .rules-body.open { display: block; }
+    .rules-body ul { padding-left: 18px; margin-top: 6px; }
+
+    .rounds-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .slide-btns {
+      display: flex;
+      gap: 6px;
+    }
+    .nav-arrow-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #0a0f18;
+      border: 1px solid var(--hair-strong);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .nav-arrow-btn:hover { background: #162030; }
+
+    .rounds-row {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .rounds-row::-webkit-scrollbar {
+      height: 6px;
+    }
+    .rounds-row::-webkit-scrollbar-track {
+      background: #06090e;
+      border-radius: 3px;
+    }
+    .rounds-row::-webkit-scrollbar-thumb {
+      background: #1b263b;
+      border-radius: 3px;
+    }
+    .rounds-row::-webkit-scrollbar-thumb:hover {
+      background: #ff7a00;
+    }
+
+    .round-col {
+      flex: 0 0 320px;
+      min-width: 320px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    @media (min-width: 768px) {
+      .round-col { flex: 0 0 340px; min-width: 340px; }
+    }
+    .round-header {
+      background: #ff7a00;
+      color: #000000;
+      padding: 10px 14px;
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .round-header .badge-count {
+      background: rgba(0, 0, 0, 0.2);
+      color: #000;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 800;
+    }
+
+    .round-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .match-card {
+      background: #090e17;
+      border: 1px solid var(--hair);
+      border-radius: 8px;
+      padding: 10px 12px;
+      transition: border-color .15s ease;
+    }
+    .match-card:hover {
+      border-color: rgba(255, 122, 0, 0.3);
+    }
+    .match-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .match-status-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .tag-completed { background: rgba(79, 174, 125, 0.15); color: #79dca6; }
+    .tag-upcoming { background: rgba(255, 255, 255, 0.05); color: #8892a0; }
+    .tag-live { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+
+    .player-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      font-size: 13px;
+      transition: all .15s ease;
+    }
+    .player-row:last-child { margin-bottom: 0; }
+    .player-row.winner {
+      background: var(--win-bg);
+      border-color: var(--win-border);
+      color: #fff;
+      font-weight: 600;
+    }
+    .player-name-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .knight-icon {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+    .player-row.winner .knight-icon {
+      opacity: 1;
+      color: #ff9d3b;
+    }
+    .score-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--muted);
+    }
+    .player-row.winner .score-chip {
+      background: #ff7a00;
+      color: #000;
+    }
+    .player-placeholder {
+      font-style: italic;
+      color: #556274;
+    }
+
+    .podium-bar {
+      margin-top: 32px;
+      background: #080d16;
+      border: 1px solid var(--hair-strong);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .podium-slot {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .podium-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      background: rgba(255, 122, 0, 0.1);
+      border: 1px solid rgba(255, 122, 0, 0.3);
+      color: #ff9d3b;
+    }
+    .podium-slot:nth-child(2) .podium-icon {
+      background: rgba(200, 200, 200, 0.1);
+      border-color: rgba(200, 200, 200, 0.3);
+      color: #d1d5db;
+    }
+    .podium-slot:nth-child(3) .podium-icon {
+      background: rgba(180, 115, 60, 0.1);
+      border-color: rgba(180, 115, 60, 0.3);
+      color: #cd7f32;
+    }
+    .podium-label {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .podium-name {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2px;
+    }
+    .in-progress-text {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    footer {
+      border-top: 1px solid var(--hair);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      background: #030406;
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
-  <!-- Top App Navigation / Redirect helper to the modern React App -->
-  <div id="root">
-    <div class="max-w-7xl mx-auto px-4 py-8 text-center space-y-6">
-      <div class="w-16 h-16 mx-auto rounded-2xl bg-[#121c15] border border-amber-500/30 flex items-center justify-center text-3xl">
-        ♞
-      </div>
-      <div>
-        <div class="text-xs uppercase font-bold text-amber-400 tracking-widest font-heading">
-          Kalpathy Sports Fest · 2026
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-brand">
+        <div class="logo-wrap">♞</div>
+        <div class="hero-copy">
+          <div class="kicker">Kalpathy Sports Fest · 2026</div>
+          <h1 class="heading">Chess fixtures</h1>
+          <p class="hero-sub">[26th – 27th September 2026] Seniors (32 players) &amp; Juniors (16 players).</p>
+          <div class="meta-row">
+            <span class="badge-live"><span class="pulse-dot"></span> Tournament Active</span>
+            <span style="color:var(--hair-strong)">·</span>
+            <span class="location-text">Location: Old Kalpathy · 5 Boards</span>
+          </div>
         </div>
-        <h1 class="text-3xl font-bold font-heading text-white mt-1">
-          Chess Championships · 2026
-        </h1>
-        <p class="text-sm text-[#9ba498] mt-2">
-          Under-18 Boys &amp; Girls · Above-18 Men's &amp; Women's
-        </p>
-      </div>
-
-      <div class="p-6 rounded-2xl bg-[#0b100d] border border-white/10 max-w-xl mx-auto text-left space-y-4">
-        <h2 class="font-heading font-bold text-lg text-white flex items-center gap-2">
-          <span>♟️</span>
-          <span>Interactive Tournament App &amp; Arbiter Deck</span>
-        </h2>
-        <p class="text-xs text-white/70 leading-relaxed">
-          The full interactive application with real-time bracket advancement, official chess leaderboards (Win=1, Draw=0.5, Loss=0, Sonneborn-Berger tiebreakers), and direct JSON backend scorekeeping is live:
-        </p>
-
-        <div class="pt-2">
-          <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 text-black font-bold text-xs hover:bg-amber-300 transition-all shadow-lg shadow-amber-500/20">
-            <span>Open Interactive Chess App</span>
-            <span>→</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="text-xs text-white/40 font-mono-code">
-        JSON Backend: <code>2026/chess/data/scores.json</code>
       </div>
     </div>
-  </div>
+  </header>
+
+  <main class="wrap">
+    
+    <div class="tabs-bar">
+      <button class="tab-btn active" id="tab-seniors" onclick="switchCategory('seniors')">Seniors</button>
+      <button class="tab-btn" id="tab-juniors" onclick="switchCategory('juniors')">Juniors</button>
+    </div>
+
+    <div class="cat-header">
+      <div>
+        <h2 class="cat-title heading" id="cat-title-text">Seniors</h2>
+        <p class="cat-desc" id="cat-desc-text">32 players · Knockout · 5 Boards (Old Kalpathy)</p>
+      </div>
+      <div class="cat-badges">
+        <span class="format-badge">5 Mins · Blitz</span>
+        <span class="status-badge-blue">IN PROGRESS</span>
+      </div>
+    </div>
+
+    <div class="rules-card">
+      <button class="rules-toggle" onclick="toggleRules()">
+        <span>+ Format &amp; rules</span>
+        <span style="font-size:11px;color:var(--muted);font-weight:400;">Official 5-Minute Blitz Rules</span>
+      </button>
+      <div class="rules-body" id="rules-content">
+        <ul>
+          <li><strong>Format:</strong> Direct Single Elimination Knockout.</li>
+          <li><strong>Time Control:</strong> 5 minutes per player (Blitz Chess), no increment.</li>
+          <li><strong>Tie-break:</strong> 3-minute Armageddon blitz or sudden-death blitz playoff.</li>
+          <li><strong>Boards:</strong> 5 Match Boards active simultaneously at Old Kalpathy venue.</li>
+          <li><strong>Arbiter Decision:</strong> Official Chief Arbiter rulings are final.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rounds-nav-bar">
+      <span>↔ Slide left/right to view rounds · <span id="round-count-text" style="color:#ff9d3b;font-weight:600;">5 Rounds</span></span>
+      <div class="slide-btns">
+        <button class="nav-arrow-btn" onclick="slideRounds(-320)">‹</button>
+        <button class="nav-arrow-btn" onclick="slideRounds(320)">›</button>
+      </div>
+    </div>
+
+    <div class="rounds-row" id="rounds-host"></div>
+
+    <div class="podium-bar">
+      <div class="podium-slot">
+        <div class="podium-icon">♚</div>
+        <div>
+          <div class="podium-label">Champion</div>
+          <div class="podium-name" id="podium-gold"><span class="in-progress-text">In Progress</span></div>
+        </div>
+      </div>
+      <div class="podium-slot">
+        <div class="podium-icon">♛</div>
+        <div>
+          <div class="podium-label">Runner-up</div>
+          <div class="podium-name" id="podium-silver"><span class="in-progress-text">In Progress</span></div>
+        </div>
+      </div>
+      <div class="podium-slot">
+        <div class="podium-icon">♞</div>
+        <div>
+          <div class="podium-label">3rd Place</div>
+          <div class="podium-name" id="podium-bronze"><span class="in-progress-text">In Progress</span></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Kalpathy Sports Fest 2026 · Chess Tournament Fixtures</p>
+    <p style="margin-top:4px;font-size:11px;color:#556274;">Location: Old Kalpathy · 5 Boards · Official tournament draws &amp; schedules</p>
+  </footer>
 
   <script>
-    // If visited directly in the single page app container, redirect to main app root
-    if (window.location.pathname.endsWith('/2026/chess/') || window.location.pathname.endsWith('/2026/chess/index.html')) {
-      const target = window.location.origin + '/';
-      // keep user informed or auto-redirect if needed
+    var DATA = {
+      seniors: {
+        id: "seniors",
+        name: "Seniors",
+        desc: "32 players · Knockout · 5 Boards (Old Kalpathy)",
+        rounds: [
+          {
+            name: "Round of 32",
+            matches: [
+              { id: "M1", b: 1, t: "09:00 AM", p1: "Navaneeth", p2: "Shrikaran S" },
+              { id: "M2", b: 2, t: "09:00 AM", p1: "Niranjan", p2: "S. Harish" },
+              { id: "M3", b: 3, t: "09:00 AM", p1: "S.Krishnan", p2: "K.S.Vasanth" },
+              { id: "M4", b: 4, t: "09:00 AM", p1: "K R Swaminathan", p2: "Pranav. R" },
+              { id: "M5", b: 5, t: "09:00 AM", p1: "V.G. Subramanian", p2: "Aravind" },
+              { id: "M6", b: 1, t: "09:30 AM", p1: "S.Ganesh", p2: "Sudarshan. R" },
+              { id: "M7", b: 2, t: "09:30 AM", p1: "Sriram Ramanan", p2: "B.K. Harikrishnan" },
+              { id: "M8", b: 3, t: "09:30 AM", p1: "Adwaith Anoop", p2: "Swaminathan" },
+              { id: "M9", b: 4, t: "09:30 AM", p1: "N.Harinarayanan", p2: "K.S.Ananthanarayanan" },
+              { id: "M10", b: 5, t: "09:30 AM", p1: "Krishnakumar K S", p2: "P.K.Rajan" },
+              { id: "M11", b: 1, t: "10:00 AM", p1: "J.Krishnan", p2: "Ananthanarayanan" },
+              { id: "M12", b: 2, t: "10:00 AM", p1: "V.S.Venkatramani", p2: "Sreeram V" },
+              { id: "M13", b: 3, t: "10:00 AM", p1: "G.V.Viswanathan", p2: "Balu @ Balasubramanian" },
+              { id: "M14", b: 4, t: "10:00 AM", p1: "R.S.Hariharan", p2: "K.R.Srinivasan" },
+              { id: "M15", b: 5, t: "10:00 AM", p1: "K.S.Venkatesh", p2: "Kesav.R" },
+              { id: "M16", b: 1, t: "10:30 AM", p1: "R S Subramanian", p2: "Ramachandran.R" }
+            ]
+          },
+          {
+            name: "Round of 16",
+            matches: [
+              { id: "R16-M1", b: 1, t: "11:00 AM", from: ["M1", "M2"] },
+              { id: "R16-M2", b: 2, t: "11:00 AM", from: ["M3", "M4"] },
+              { id: "R16-M3", b: 3, t: "11:00 AM", from: ["M5", "M6"] },
+              { id: "R16-M4", b: 4, t: "11:00 AM", from: ["M7", "M8"] },
+              { id: "R16-M5", b: 5, t: "11:30 AM", from: ["M9", "M10"] },
+              { id: "R16-M6", b: 1, t: "11:30 AM", from: ["M11", "M12"] },
+              { id: "R16-M7", b: 2, t: "11:30 AM", from: ["M13", "M14"] },
+              { id: "R16-M8", b: 3, t: "11:30 AM", from: ["M15", "M16"] }
+            ]
+          },
+          {
+            name: "Quarterfinals",
+            matches: [
+              { id: "QF-1", b: 1, t: "02:00 PM", from: ["R16-M1", "R16-M2"] },
+              { id: "QF-2", b: 2, t: "02:00 PM", from: ["R16-M3", "R16-M4"] },
+              { id: "QF-3", b: 3, t: "02:30 PM", from: ["R16-M5", "R16-M6"] },
+              { id: "QF-4", b: 4, t: "02:30 PM", from: ["R16-M7", "R16-M8"] }
+            ]
+          },
+          {
+            name: "Semifinals",
+            matches: [
+              { id: "SF-1", b: 1, t: "03:30 PM", from: ["QF-1", "QF-2"] },
+              { id: "SF-2", b: 2, t: "03:30 PM", from: ["QF-3", "QF-4"] }
+            ]
+          },
+          {
+            name: "Final & 3rd Place",
+            matches: [
+              { id: "FINAL", b: 1, t: "04:30 PM", isFinal: true, from: ["SF-1", "SF-2"] },
+              { id: "3RD", b: 2, t: "04:30 PM", isBronze: true, from: ["SF-1", "SF-2"] }
+            ]
+          }
+        ]
+      },
+      juniors: {
+        id: "juniors",
+        name: "Juniors",
+        desc: "16 players · Knockout · 5 Boards (Old Kalpathy)",
+        rounds: [
+          {
+            name: "Round of 16",
+            matches: [
+              { id: "R1-1", b: 1, t: "09:00 AM", p1: "ADITHYA", p2: "Aswina" },
+              { id: "R1-2", b: 2, t: "09:00 AM", p1: "Nandan", p2: "L.Adwaidmuthukrishnan" },
+              { id: "R1-3", b: 3, t: "09:00 AM", p1: "Sriniketh. S", p2: "Siddharth Sreekumar" },
+              { id: "R1-4", b: 4, t: "09:00 AM", p1: "Rishi Santhosh", p2: "RISHIKESH" },
+              { id: "R1-5", b: 5, t: "09:30 AM", p1: "Aayush Vijayan", p2: "Sreerag" },
+              { id: "R1-6", b: 1, t: "09:30 AM", p1: "Sidharth", p2: "Rithul. K" },
+              { id: "R1-7", b: 2, t: "09:30 AM", p1: "Badrinath PB", p2: "Viresh Balasubramanian R" },
+              { id: "R1-8", b: 3, t: "09:30 AM", p1: "Sreehari", p2: "Akhilesh" }
+            ]
+          },
+          {
+            name: "Quarterfinals",
+            matches: [
+              { id: "QF1", b: 1, t: "11:00 AM", from: ["R1-1", "R1-2"] },
+              { id: "QF2", b: 2, t: "11:00 AM", from: ["R1-3", "R1-4"] },
+              { id: "QF3", b: 3, t: "11:30 AM", from: ["R1-5", "R1-6"] },
+              { id: "QF4", b: 4, t: "11:30 AM", from: ["R1-7", "R1-8"] }
+            ]
+          },
+          {
+            name: "Semifinals",
+            matches: [
+              { id: "SF1", b: 1, t: "02:00 PM", from: ["QF1", "QF2"] },
+              { id: "SF2", b: 2, t: "02:00 PM", from: ["QF3", "QF4"] }
+            ]
+          },
+          {
+            name: "Final & 3rd Place",
+            matches: [
+              { id: "FINAL", b: 1, t: "03:30 PM", isFinal: true, from: ["SF1", "SF2"] },
+              { id: "3RD", b: 2, t: "03:30 PM", isBronze: true, from: ["SF1", "SF2"] }
+            ]
+          }
+        ]
+      }
+    };
+
+    var currentCat = "seniors";
+    var scoresData = { seniors: {}, juniors: {} };
+
+    function switchCategory(cat) {
+      currentCat = cat;
+      document.getElementById("tab-seniors").classList.toggle("active", cat === "seniors");
+      document.getElementById("tab-juniors").classList.toggle("active", cat === "juniors");
+      
+      var catObj = DATA[cat];
+      document.getElementById("cat-title-text").textContent = catObj.name;
+      document.getElementById("cat-desc-text").textContent = catObj.desc;
+      document.getElementById("round-count-text").textContent = catObj.rounds.length + " Rounds";
+      
+      renderRounds();
     }
+
+    function toggleRules() {
+      var el = document.getElementById("rules-content");
+      el.classList.toggle("open");
+    }
+
+    function slideRounds(offset) {
+      var row = document.getElementById("rounds-host");
+      row.scrollBy({ left: offset, behavior: "smooth" });
+    }
+
+    function resolveMatch(cat, matchId, matchMap) {
+      var scoreEntry = (scoresData[cat] && scoresData[cat][matchId]) || {};
+      var winnerName = scoreEntry.winner || null;
+      var scoreVal = scoreEntry.score || null;
+
+      var m = matchMap[matchId];
+      if (!m) return { p1: "TBD", p2: "TBD", winner: null };
+
+      var p1 = m.p1;
+      var p2 = m.p2;
+
+      if (m.from) {
+        var mPrev1 = resolveMatch(cat, m.from[0], matchMap);
+        var mPrev2 = resolveMatch(cat, m.from[1], matchMap);
+
+        if (m.isBronze) {
+          p1 = mPrev1.loser || ("Loser of " + m.from[0]);
+          p2 = mPrev2.loser || ("Loser of " + m.from[1]);
+        } else {
+          p1 = mPrev1.winner || ("Winner of " + m.from[0]);
+          p2 = mPrev2.winner || ("Winner of " + m.from[1]);
+        }
+      }
+
+      var loserName = null;
+      if (winnerName && p1 && p2) {
+        if (winnerName.toLowerCase() === p1.toLowerCase()) loserName = p2;
+        else if (winnerName.toLowerCase() === p2.toLowerCase()) loserName = p1;
+      }
+
+      return {
+        p1: p1,
+        p2: p2,
+        winner: winnerName,
+        loser: loserName,
+        score: scoreVal,
+        completed: Boolean(winnerName)
+      };
+    }
+
+    function renderRounds() {
+      var catObj = DATA[currentCat];
+      var host = document.getElementById("rounds-host");
+      host.innerHTML = "";
+
+      var matchMap = {};
+      catObj.rounds.forEach(function(round) {
+        round.matches.forEach(function(m) {
+          matchMap[m.id] = m;
+        });
+      });
+
+      catObj.rounds.forEach(function(round) {
+        var col = document.createElement("div");
+        col.className = "round-col";
+
+        var header = document.createElement("div");
+        header.className = "round-header heading";
+        header.innerHTML = '<span>' + round.name + '</span><span class="badge-count">' + round.matches.length + ' GAMES</span>';
+        col.appendChild(header);
+
+        var cardsWrap = document.createElement("div");
+        cardsWrap.className = "round-cards";
+
+        round.matches.forEach(function(m) {
+          var state = resolveMatch(currentCat, m.id, matchMap);
+          var card = document.createElement("div");
+          card.className = "match-card";
+
+          var isLive = !state.completed && state.p1 && state.p2 && !state.p1.startsWith("Winner") && !state.p2.startsWith("Winner");
+          var statusTag = state.completed ? '<span class="match-status-tag tag-completed">COMPLETED</span>' : (isLive ? '<span class="match-status-tag tag-live">UPCOMING</span>' : '<span class="match-status-tag tag-upcoming">SCHEDULED</span>');
+
+          var meta = '<div class="match-meta"><span>BOARD ' + m.b + ' · ' + m.t + '</span>' + statusTag + '</div>';
+
+          var p1IsWinner = state.winner && state.p1 && state.winner.toLowerCase() === state.p1.toLowerCase();
+          var p2IsWinner = state.winner && state.p2 && state.winner.toLowerCase() === state.p2.toLowerCase();
+
+          var p1Score = p1IsWinner ? (state.score ? state.score.split('-')[0].trim() : '1') : (state.completed ? '0' : '-');
+          var p2Score = p2IsWinner ? (state.score ? state.score.split('-')[1].trim() : '1') : (state.completed ? '0' : '-');
+
+          var p1Class = "player-row" + (p1IsWinner ? " winner" : "");
+          var p2Class = "player-row" + (p2IsWinner ? " winner" : "");
+
+          var isP1Placeholder = state.p1 && (state.p1.startsWith("Winner") || state.p1.startsWith("Loser") || state.p1 === "TBD");
+          var isP2Placeholder = state.p2 && (state.p2.startsWith("Winner") || state.p2.startsWith("Loser") || state.p2 === "TBD");
+
+          var p1HTML = '<div class="' + p1Class + '">' +
+            '<div class="player-name-wrap">' +
+              '<span class="knight-icon">♞</span>' +
+              '<span class="' + (isP1Placeholder ? 'player-placeholder' : '') + '">' + state.p1 + '</span>' +
+            '</div>' +
+            '<span class="score-chip">' + p1Score + '</span>' +
+          '</div>';
+
+          var p2HTML = '<div class="' + p2Class + '">' +
+            '<div class="player-name-wrap">' +
+              '<span class="knight-icon">♞</span>' +
+              '<span class="' + (isP2Placeholder ? 'player-placeholder' : '') + '">' + state.p2 + '</span>' +
+            '</div>' +
+            '<span class="score-chip">' + p2Score + '</span>' +
+          '</div>';
+
+          card.innerHTML = meta + p1HTML + p2HTML;
+          cardsWrap.appendChild(card);
+        });
+
+        col.appendChild(cardsWrap);
+        host.appendChild(col);
+      });
+
+      var finalState = resolveMatch(currentCat, "FINAL", matchMap);
+      var bronzeState = resolveMatch(currentCat, "3RD", matchMap);
+
+      var goldEl = document.getElementById("podium-gold");
+      var silverEl = document.getElementById("podium-silver");
+      var bronzeEl = document.getElementById("podium-bronze");
+
+      if (finalState.completed && finalState.winner) {
+        goldEl.textContent = finalState.winner;
+        silverEl.textContent = finalState.loser || "In Progress";
+      } else {
+        goldEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
+        silverEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
+      }
+
+      if (bronzeState.completed && bronzeState.winner) {
+        bronzeEl.textContent = bronzeState.winner;
+      } else {
+        bronzeEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
+      }
+    }
+
+    function fetchScores() {
+      fetch("./seniors.json?t=" + Date.now())
+        .then(function(res) { return res.json(); })
+        .then(function(json) {
+          scoresData.seniors = json || {};
+          renderRounds();
+        })
+        .catch(function(e) {});
+
+      fetch("./juniors.json?t=" + Date.now())
+        .then(function(res) { return res.json(); })
+        .then(function(json) {
+          scoresData.juniors = json || {};
+          renderRounds();
+        })
+        .catch(function(e) {});
+    }
+
+    renderRounds();
+    fetchScores();
+    setInterval(fetchScores, 15000);
   </script>
 </body>
 </html>
