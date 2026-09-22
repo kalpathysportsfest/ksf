@@ -1,0 +1,56 @@
+{
+  "id": "u18-boys",
+  "name": "Under-18 Boys",
+  "subtitle": "16 Players · Knockout Bracket",
+  "chip": "Rapid · 25m + 10s",
+  "type": "knockout",
+  "timeControl": "25 min + 10s increment",
+  "rulesFormat": [
+    "Single-elimination bracket with 16 seeded players.",
+    "Round of 16 to Semifinals and Grand Final.",
+    "Board 1 to 8 simultaneously in Round 1.",
+    "No score keeping needed: mention who won (1-0, 0-1, or Blitz tiebreak) to proceed."
+  ],
+  "rounds": [
+    {
+      "name": "Round of 16",
+      "time": "09:30 AM",
+      "matches": [
+        { "id": "U18B-R1-B1", "board": "Board 1", "time": "09:30 AM", "a": "Sreeram K.S.", "b": "Thanmay Narayanan", "winner": "A", "resultText": "1 - 0" },
+        { "id": "U18B-R1-B2", "board": "Board 2", "time": "09:30 AM", "a": "Badrinath P.B.", "b": "Siddharth G. Iyer", "winner": "A", "resultText": "1 - 0" },
+        { "id": "U18B-R1-B3", "board": "Board 3", "time": "09:30 AM", "a": "P.S. Srinivasan", "b": "Haridath P.", "winner": "B", "resultText": "0 - 1" },
+        { "id": "U18B-R1-B4", "board": "Board 4", "time": "09:30 AM", "a": "Adithya Venkataraman", "b": "L. Adwaidmuthu", "winner": "A", "resultText": "1 - 0" },
+        { "id": "U18B-R1-B5", "board": "Board 5", "time": "09:30 AM", "a": "Rishi Praveen", "b": "Karthik Subramanian" },
+        { "id": "U18B-R1-B6", "board": "Board 6", "time": "09:30 AM", "a": "Gautam Krishna", "b": "Varun Mahadevan" },
+        { "id": "U18B-R1-B7", "board": "Board 7", "time": "09:30 AM", "a": "Madhav Ramachandran", "b": "Pranav S. Kumar" },
+        { "id": "U18B-R1-B8", "board": "Board 8", "time": "09:30 AM", "a": "Abhinav Viswanathan", "b": "Niranjan S." }
+      ]
+    },
+    {
+      "name": "Quarterfinals",
+      "time": "11:15 AM",
+      "matches": [
+        { "id": "U18B-QF1", "board": "Board 1", "time": "11:15 AM", "a": { "ref": "U18B-R1-B1" }, "b": { "ref": "U18B-R1-B2" } },
+        { "id": "U18B-QF2", "board": "Board 2", "time": "11:15 AM", "a": { "ref": "U18B-R1-B3" }, "b": { "ref": "U18B-R1-B4" } },
+        { "id": "U18B-QF3", "board": "Board 3", "time": "11:15 AM", "a": { "ref": "U18B-R1-B5" }, "b": { "ref": "U18B-R1-B6" } },
+        { "id": "U18B-QF4", "board": "Board 4", "time": "11:15 AM", "a": { "ref": "U18B-R1-B7" }, "b": { "ref": "U18B-R1-B8" } }
+      ]
+    },
+    {
+      "name": "Semifinals",
+      "time": "02:00 PM",
+      "matches": [
+        { "id": "U18B-SF1", "board": "Board 1", "time": "02:00 PM", "a": { "ref": "U18B-QF1" }, "b": { "ref": "U18B-QF2" } },
+        { "id": "U18B-SF2", "board": "Board 2", "time": "02:00 PM", "a": { "ref": "U18B-QF3" }, "b": { "ref": "U18B-QF4" } }
+      ]
+    },
+    {
+      "name": "Podium & Finals",
+      "time": "04:00 PM",
+      "matches": [
+        { "id": "U18B-3RD", "board": "Board 2", "time": "03:45 PM", "a": { "ref": "U18B-SF1", "loser": true }, "b": { "ref": "U18B-SF2", "loser": true } },
+        { "id": "U18B-FINAL", "board": "Board 1", "time": "04:15 PM", "a": { "ref": "U18B-SF1" }, "b": { "ref": "U18B-SF2" } }
+      ]
+    }
+  ]
+}

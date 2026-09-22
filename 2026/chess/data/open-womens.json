@@ -1,0 +1,69 @@
+{
+  "id": "open-womens",
+  "name": "Above-18 Women’s",
+  "subtitle": "8 Players · Group Standings & Playoffs",
+  "chip": "Rapid · 30m + 15s",
+  "type": "roundrobin",
+  "timeControl": "30 min + 15s increment",
+  "rulesFormat": [
+    "Preliminary Round-Robin stage in 2 seeded groups of 4 players.",
+    "Top 2 players from each group advance to cross-semifinals.",
+    "Standings: Win = 1 pt, Draw = 0.5 pt, Loss = 0 pt. Sonneborn-Berger tiebreaker."
+  ],
+  "groups": [
+    {
+      "id": "Group-A",
+      "name": "Group A Standings",
+      "teams": [
+        "Vaidehi Ramaswamy",
+        "Radha Narayanan",
+        "Sowmya Venkat",
+        "Deepa Sundaram"
+      ],
+      "matches": [
+        { "id": "WMN-GA-M1", "board": "Board 9", "time": "10:00 AM", "a": "Vaidehi Ramaswamy", "b": "Radha Narayanan", "winner": "A", "resultText": "1 - 0" },
+        { "id": "WMN-GA-M2", "board": "Board 10", "time": "10:00 AM", "a": "Sowmya Venkat", "b": "Deepa Sundaram", "winner": "draw", "resultText": "½ - ½" },
+        { "id": "WMN-GA-M3", "board": "Board 9", "time": "11:45 AM", "a": "Vaidehi Ramaswamy", "b": "Sowmya Venkat" },
+        { "id": "WMN-GA-M4", "board": "Board 10", "time": "11:45 AM", "a": "Radha Narayanan", "b": "Deepa Sundaram" },
+        { "id": "WMN-GA-M5", "board": "Board 9", "time": "02:00 PM", "a": "Deepa Sundaram", "b": "Vaidehi Ramaswamy" },
+        { "id": "WMN-GA-M6", "board": "Board 10", "time": "02:00 PM", "a": "Radha Narayanan", "b": "Sowmya Venkat" }
+      ]
+    },
+    {
+      "id": "Group-B",
+      "name": "Group B Standings",
+      "teams": [
+        "Malathi Krishnan",
+        "Usha Hariharan",
+        "Bhuvaneswari K.",
+        "Shanti Subramanian"
+      ],
+      "matches": [
+        { "id": "WMN-GB-M1", "board": "Board 11", "time": "10:00 AM", "a": "Malathi Krishnan", "b": "Usha Hariharan", "winner": "A", "resultText": "1 - 0" },
+        { "id": "WMN-GB-M2", "board": "Board 12", "time": "10:00 AM", "a": "Bhuvaneswari K.", "b": "Shanti Subramanian" },
+        { "id": "WMN-GB-M3", "board": "Board 11", "time": "11:45 AM", "a": "Malathi Krishnan", "b": "Bhuvaneswari K." },
+        { "id": "WMN-GB-M4", "board": "Board 12", "time": "11:45 AM", "a": "Usha Hariharan", "b": "Shanti Subramanian" },
+        { "id": "WMN-GB-M5", "board": "Board 11", "time": "02:00 PM", "a": "Shanti Subramanian", "b": "Malathi Krishnan" },
+        { "id": "WMN-GB-M6", "board": "Board 12", "time": "02:00 PM", "a": "Usha Hariharan", "b": "Bhuvaneswari K." }
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "name": "Championship Semifinals",
+      "time": "03:45 PM",
+      "matches": [
+        { "id": "WMN-SF1", "board": "Board 9", "time": "03:45 PM", "a": { "group": "Group-A", "rank": 1 }, "b": { "group": "Group-B", "rank": 2 } },
+        { "id": "WMN-SF2", "board": "Board 10", "time": "03:45 PM", "a": { "group": "Group-B", "rank": 1 }, "b": { "group": "Group-A", "rank": 2 } }
+      ]
+    },
+    {
+      "name": "Podium & Finals",
+      "time": "05:15 PM",
+      "matches": [
+        { "id": "WMN-3RD", "board": "Board 10", "time": "05:15 PM", "a": { "ref": "WMN-SF1", "loser": true }, "b": { "ref": "WMN-SF2", "loser": true } },
+        { "id": "WMN-FINAL", "board": "Board 9", "time": "05:30 PM", "a": { "ref": "WMN-SF1" }, "b": { "ref": "WMN-SF2" } }
+      ]
+    }
+  ]
+}
