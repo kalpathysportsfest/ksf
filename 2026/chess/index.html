@@ -681,424 +681,397 @@
   </footer>
 
   <script>
-    /* Tournament Initial Pairings */
-    var DATA = {
-      seniors: {
-        id: "seniors",
-        name: "Seniors",
-        desc: "33 players · Knockout · 5 Boards (Old Kalpathy) · 9:30 AM onwards",
-        rounds: [
-          {
-            name: "Round of 32",
-            matches: [
-              { id: "M1", b: 1, p1: "Navaneeth", p2: "Sreenivasan S" },
-              { id: "M2", b: 2, p1: "Q1 (Suraj / Arjun LK)", p2: "V A Suryanarayanan" },
-              { id: "M3", b: 3, p1: "CT", p2: "Madhumathi Ramajayam" },
-              { id: "M4", b: 4, p1: "Seshadri", p2: "Eashwer" },
-              { id: "M5", b: 5, p1: "Rajan PV", p2: "Meera Harihar" },
-              { id: "M6", b: 1, p1: "Aswath G", p2: "Vignesh S" },
-              { id: "M7", b: 2, p1: "Sreenath CG", p2: "Divyashri S" },
-              { id: "M8", b: 3, p1: "Seetha B", p2: "Sreeraj K.R" },
-              { id: "M9", b: 4, p1: "Subramanian", p2: "Karthik" },
-              { id: "M10", b: 5, p1: "Janakiraman N", p2: "Yogesh TS" },
-              { id: "M11", b: 1, p1: "Mahadevan (Kunja)", p2: "Mahadevan (Maddy)" },
-              { id: "M12", b: 2, p1: "Subbu", p2: "Moorthy" },
-              { id: "M13", b: 3, p1: "Bumika", p2: "SITARAMAN" },
-              { id: "M14", b: 4, p1: "Sreenivasan P V (Srikanth)", p2: "Rajalakshmi Krishnan" },
-              { id: "M15", b: 5, p1: "Anand S", p2: "Ramakrishnan N N" },
-              { id: "M16", b: 1, p1: "Venkitaramanan K.V.", p2: "Abhi" }
-            ]
-          },
-          {
-            name: "Round of 16",
-            matches: [
-              { id: "R16-M1", b: 1, from: ["M1", "M2"] },
-              { id: "R16-M2", b: 2, from: ["M3", "M4"] },
-              { id: "R16-M3", b: 3, from: ["M5", "M6"] },
-              { id: "R16-M4", b: 4, from: ["M7", "M8"] },
-              { id: "R16-M5", b: 5, from: ["M9", "M10"] },
-              { id: "R16-M6", b: 1, from: ["M11", "M12"] },
-              { id: "R16-M7", b: 2, from: ["M13", "M14"] },
-              { id: "R16-M8", b: 3, from: ["M15", "M16"] }
-            ]
-          },
-          {
-            name: "Quarterfinals",
-            matches: [
-              { id: "QF1", b: 1, from: ["R16-M1", "R16-M2"] },
-              { id: "QF2", b: 2, from: ["R16-M3", "R16-M4"] },
-              { id: "QF3", b: 3, from: ["R16-M5", "R16-M6"] },
-              { id: "QF4", b: 4, from: ["R16-M7", "R16-M8"] }
-            ]
-          },
-          {
-            name: "Semifinals",
-            matches: [
-              { id: "SF1", b: 1, from: ["QF1", "QF2"] },
-              { id: "SF2", b: 2, from: ["QF3", "QF4"] }
-            ]
-          },
-          {
-            name: "Final & 3rd Place",
-            matches: [
-              { id: "FINAL", b: 1, isFinal: true, from: ["SF1", "SF2"] },
-              { id: "3RD", b: 2, isBronze: true, from: ["SF1", "SF2"] }
-            ]
-          }
-        ]
-      },
-      juniors: {
-        id: "juniors",
-        name: "Juniors",
-        desc: "16 players · Knockout · 5 Boards (Old Kalpathy) · 9:30 AM onwards",
-        rounds: [
-          {
-            name: "Round of 16",
-            matches: [
-              { id: "R1-1", b: 1, p1: "ADITHYA", p2: "Aswina" },
-              { id: "R1-2", b: 2, p1: "Nandan", p2: "L.Adwaidmuthukrishnan" },
-              { id: "R1-3", b: 3, p1: "Sriniketh. S", p2: "Siddharth Sreekumar" },
-              { id: "R1-4", b: 4, p1: "Rishi Santhosh", p2: "RISHIKESH" },
-              { id: "R1-5", b: 5, p1: "Aayush Vijayan", p2: "Sreerag" },
-              { id: "R1-6", b: 1, p1: "Sidharth", p2: "Rithul. K" },
-              { id: "R1-7", b: 2, p1: "Badrinath PB", p2: "Viresh Balasubramanian R" },
-              { id: "R1-8", b: 3, p1: "Sreehari", p2: "Akhilesh" }
-            ]
-          },
-          {
-            name: "Quarterfinals",
-            matches: [
-              { id: "QF1", b: 1, from: ["R1-1", "R1-2"] },
-              { id: "QF2", b: 2, from: ["R1-3", "R1-4"] },
-              { id: "QF3", b: 3, from: ["R1-5", "R1-6"] },
-              { id: "QF4", b: 4, from: ["R1-7", "R1-8"] }
-            ]
-          },
-          {
-            name: "Semifinals",
-            matches: [
-              { id: "SF1", b: 1, from: ["QF1", "QF2"] },
-              { id: "SF2", b: 2, from: ["QF3", "QF4"] }
-            ]
-          },
-          {
-            name: "Final & 3rd Place",
-            matches: [
-              { id: "FINAL", b: 1, isFinal: true, from: ["SF1", "SF2"] },
-              { id: "3RD", b: 2, isBronze: true, from: ["SF1", "SF2"] }
-            ]
-          }
-        ]
-      }
-    };
-
-    var currentCat = "seniors";
-    var scoresData = {
-      seniors: {},
-      juniors: {}
-    };
-
-    // Memoization cache for fast O(1) match lookups
-    var resolveCache = {};
-
-    /* Accordion Toggle */
-    function toggleRules() {
-      var el = document.getElementById("rules-content");
-      if (el) el.classList.toggle("open");
-    }
-
-    /* Smooth Slide */
-    function slideRounds(offset) {
-      var row = document.getElementById("rounds-" + currentCat);
-      if (row) {
-        row.scrollBy({ left: offset, behavior: "smooth" });
-      }
-    }
-
-    /* Resolve Match State & Winners with Memoization */
-    function resolveMatch(cat, matchId, matchMap) {
-      var cacheKey = cat + ":" + matchId;
-      if (resolveCache[cacheKey]) {
-        return resolveCache[cacheKey];
-      }
-
-      var scoreEntry = (scoresData[cat] && scoresData[cat][matchId]) || {};
-      var winnerName = scoreEntry.winner || null;
-      var scoreVal = scoreEntry.score || null;
-
-      var m = matchMap[matchId];
-      if (!m) {
-        var emptyRes = { p1: "TBD", p2: "TBD", winner: null, loser: null, score: null, completed: false };
-        resolveCache[cacheKey] = emptyRes;
-        return emptyRes;
-      }
-
-      var p1 = m.p1;
-      var p2 = m.p2;
-
-      if (m.from) {
-        var mPrev1 = resolveMatch(cat, m.from[0], matchMap);
-        var mPrev2 = resolveMatch(cat, m.from[1], matchMap);
-
-        if (m.isBronze) {
-          p1 = mPrev1.loser || ("Loser of " + m.from[0]);
-          p2 = mPrev2.loser || ("Loser of " + m.from[1]);
-        } else {
-          p1 = mPrev1.winner || ("Winner of " + m.from[0]);
-          p2 = mPrev2.winner || ("Winner of " + m.from[1]);
+  /* Tournament Initial Pairings */
+  var DATA = {
+    seniors: {
+      id: "seniors",
+      name: "Seniors",
+      desc: "33 players · Knockout · 5 Boards (Old Kalpathy) · 9:30 AM onwards",
+      rounds: [
+        {
+          name: "Round of 32",
+          matches: [
+            { id: "M1", b: 1, p1: "Navaneeth", p2: "Sreenivasan S" },
+            { id: "M2", b: 2, p1: "Q1 (Suraj / Arjun LK)", p2: "V A Suryanarayanan" },
+            { id: "M3", b: 3, p1: "CT", p2: "Madhumathi Ramajayam" },
+            { id: "M4", b: 4, p1: "Seshadri", p2: "Eashwer" },
+            { id: "M5", b: 5, p1: "Rajan PV", p2: "Meera Harihar" },
+            { id: "M6", b: 1, p1: "Aswath G", p2: "Vignesh S" },
+            { id: "M7", b: 2, p1: "Sreenath CG", p2: "Divyashri S" },
+            { id: "M8", b: 3, p1: "Seetha B", p2: "Sreeraj K.R" },
+            { id: "M9", b: 4, p1: "Subramanian", p2: "Karthik" },
+            { id: "M10", b: 5, p1: "Janakiraman N", p2: "Yogesh TS" },
+            { id: "M11", b: 1, p1: "Mahadevan (Kunja)", p2: "Mahadevan (Maddy)" },
+            { id: "M12", b: 2, p1: "Subbu", p2: "Moorthy" },
+            { id: "M13", b: 3, p1: "Bumika", p2: "SITARAMAN" },
+            { id: "M14", b: 4, p1: "Sreenivasan P V (Srikanth)", p2: "Rajalakshmi Krishnan" },
+            { id: "M15", b: 5, p1: "Anand S", p2: "Ramakrishnan N N" },
+            { id: "M16", b: 1, p1: "Venkitaramanan K.V.", p2: "Abhi" }
+          ]
+        },
+        {
+          name: "Round of 16",
+          matches: [
+            { id: "R16-M1", b: 1, from: ["M1", "M2"] },
+            { id: "R16-M2", b: 2, from: ["M3", "M4"] },
+            { id: "R16-M3", b: 3, from: ["M5", "M6"] },
+            { id: "R16-M4", b: 4, from: ["M7", "M8"] },
+            { id: "R16-M5", b: 5, from: ["M9", "M10"] },
+            { id: "R16-M6", b: 1, from: ["M11", "M12"] },
+            { id: "R16-M7", b: 2, from: ["M13", "M14"] },
+            { id: "R16-M8", b: 3, from: ["M15", "M16"] }
+          ]
+        },
+        {
+          name: "Quarterfinals",
+          matches: [
+            { id: "QF1", b: 1, from: ["R16-M1", "R16-M2"] },
+            { id: "QF2", b: 2, from: ["R16-M3", "R16-M4"] },
+            { id: "QF3", b: 3, from: ["R16-M5", "R16-M6"] },
+            { id: "QF4", b: 4, from: ["R16-M7", "R16-M8"] }
+          ]
+        },
+        {
+          name: "Semifinals",
+          matches: [
+            { id: "SF1", b: 1, from: ["QF1", "QF2"] },
+            { id: "SF2", b: 2, from: ["QF3", "QF4"] }
+          ]
+        },
+        {
+          name: "Final & 3rd Place",
+          matches: [
+            { id: "FINAL", b: 1, isFinal: true, from: ["SF1", "SF2"] },
+            { id: "3RD", b: 2, isBronze: true, from: ["SF1", "SF2"] }
+          ]
         }
-      }
+      ]
+    },
+    juniors: {
+      id: "juniors",
+      name: "Juniors",
+      desc: "16 players · Knockout · 5 Boards (Old Kalpathy) · 9:30 AM onwards",
+      rounds: [
+        {
+          name: "Round of 16",
+          matches: [
+            { id: "R1-1", b: 1, p1: "ADITHYA", p2: "Aswina" },
+            { id: "R1-2", b: 2, p1: "Nandan", p2: "L.Adwaidmuthukrishnan" },
+            { id: "R1-3", b: 3, p1: "Sriniketh. S", p2: "Siddharth Sreekumar" },
+            { id: "R1-4", b: 4, p1: "Rishi Santhosh", p2: "RISHIKESH" },
+            { id: "R1-5", b: 5, p1: "Aayush Vijayan", p2: "Sreerag" },
+            { id: "R1-6", b: 1, p1: "Sidharth", p2: "Rithul. K" },
+            { id: "R1-7", b: 2, p1: "Badrinath PB", p2: "Viresh Balasubramanian R" },
+            { id: "R1-8", b: 3, p1: "Sreehari", p2: "Akhilesh" }
+          ]
+        },
+        {
+          name: "Quarterfinals",
+          matches: [
+            { id: "QF1", b: 1, from: ["R1-1", "R1-2"] },
+            { id: "QF2", b: 2, from: ["R1-3", "R1-4"] },
+            { id: "QF3", b: 3, from: ["R1-5", "R1-6"] },
+            { id: "QF4", b: 4, from: ["R1-7", "R1-8"] }
+          ]
+        },
+        {
+          name: "Semifinals",
+          matches: [
+            { id: "SF1", b: 1, from: ["QF1", "QF2"] },
+            { id: "SF2", b: 2, from: ["QF3", "QF4"] }
+          ]
+        },
+        {
+          name: "Final & 3rd Place",
+          matches: [
+            { id: "FINAL", b: 1, isFinal: true, from: ["SF1", "SF2"] },
+            { id: "3RD", b: 2, isBronze: true, from: ["SF1", "SF2"] }
+          ]
+        }
+      ]
+    }
+  };
 
-      var loserName = null;
-      if (winnerName && p1 && p2) {
-        if (winnerName.toLowerCase() === p1.toLowerCase()) loserName = p2;
-        else if (winnerName.toLowerCase() === p2.toLowerCase()) loserName = p1;
-      }
+  var currentCat = "seniors";
+  var scoresData = { seniors: {}, juniors: {} };
 
-      var res = {
-        p1: p1,
-        p2: p2,
-        winner: winnerName,
-        loser: loserName,
-        score: scoreVal,
-        completed: Boolean(winnerName)
-      };
+  /* Cache prebuilt match maps & resolved states to avoid recalculating during UI interactions */
+  var matchMaps = {
+    seniors: getMatchMap("seniors"),
+    juniors: getMatchMap("juniors")
+  };
+  var resolvedStateCache = {};
 
-      resolveCache[cacheKey] = res;
-      return res;
+  function toggleRules() {
+    var el = document.getElementById("rules-content");
+    if (el) el.classList.toggle("open");
+  }
+
+  function slideRounds(offset) {
+    var row = document.getElementById("rounds-" + currentCat);
+    if (row) row.scrollBy({ left: offset, behavior: "smooth" });
+  }
+
+  function getMatchMap(catKey) {
+    var map = {};
+    DATA[catKey].rounds.forEach(function(round) {
+      round.matches.forEach(function(m) { map[m.id] = m; });
+    });
+    return map;
+  }
+
+  function resolveMatch(cat, matchId) {
+    var cacheKey = cat + ":" + matchId;
+    if (resolvedStateCache[cacheKey]) return resolvedStateCache[cacheKey];
+
+    var scoreEntry = (scoresData[cat] && scoresData[cat][matchId]) || {};
+    var winnerName = scoreEntry.winner || null;
+    var scoreVal = scoreEntry.score || null;
+
+    var matchMap = matchMaps[cat];
+    var m = matchMap[matchId];
+    if (!m) {
+      var emptyRes = { p1: "TBD", p2: "TBD", winner: null, loser: null, score: null, completed: false };
+      resolvedStateCache[cacheKey] = emptyRes;
+      return emptyRes;
     }
 
-    /* Build map of matchId -> matchObj for quick lookup */
-    function getMatchMap(catKey) {
-      var map = {};
+    var p1 = m.p1;
+    var p2 = m.p2;
+
+    if (m.from) {
+      var mPrev1 = resolveMatch(cat, m.from[0]);
+      var mPrev2 = resolveMatch(cat, m.from[1]);
+
+      if (m.isBronze) {
+        p1 = mPrev1.loser || ("Loser of " + m.from[0]);
+        p2 = mPrev2.loser || ("Loser of " + m.from[1]);
+      } else {
+        p1 = mPrev1.winner || ("Winner of " + m.from[0]);
+        p2 = mPrev2.winner || ("Winner of " + m.from[1]);
+      }
+    }
+
+    var loserName = null;
+    if (winnerName && p1 && p2) {
+      if (winnerName.toLowerCase() === p1.toLowerCase()) loserName = p2;
+      else if (winnerName.toLowerCase() === p2.toLowerCase()) loserName = p1;
+    }
+
+    var res = {
+      p1: p1,
+      p2: p2,
+      winner: winnerName,
+      loser: loserName,
+      score: scoreVal,
+      completed: Boolean(winnerName)
+    };
+
+    resolvedStateCache[cacheKey] = res;
+    return res;
+  }
+
+  function renderCategoryDOM(catKey) {
+    var catObj = DATA[catKey];
+    var host = document.getElementById("rounds-" + catKey);
+    if (!host) return;
+
+    var fragment = document.createDocumentFragment();
+
+    catObj.rounds.forEach(function(round) {
+      var col = document.createElement("div");
+      col.className = "round-col";
+
+      var header = document.createElement("div");
+      header.className = "round-header heading";
+      header.innerHTML = '<span>' + round.name + '</span><span class="badge-count">' + round.matches.length + ' GAMES</span>';
+      col.appendChild(header);
+
+      var cardsWrap = document.createElement("div");
+      cardsWrap.className = "round-cards";
+
+      round.matches.forEach(function(m) {
+        var state = resolveMatch(catKey, m.id);
+        var card = document.createElement("div");
+        card.className = "match-card";
+
+        var isLive = !state.completed && state.p1 && state.p2 && !state.p1.startsWith("Winner") && !state.p2.startsWith("Winner");
+        var statusTag = state.completed
+          ? '<span class="match-status-tag tag-completed">COMPLETED</span>'
+          : (isLive ? '<span class="match-status-tag tag-live">UPCOMING</span>' : '<span class="match-status-tag tag-upcoming">SCHEDULED</span>');
+
+        var meta = '<div class="match-meta"><span>BOARD ' + m.b + '</span>' + statusTag + '</div>';
+
+        var p1IsWinner = state.winner && state.p1 && state.winner.toLowerCase() === state.p1.toLowerCase();
+        var p2IsWinner = state.winner && state.p2 && state.winner.toLowerCase() === state.p2.toLowerCase();
+
+        var p1Score = p1IsWinner ? (state.score ? state.score.split('-')[0].trim() : '1') : (state.completed ? '0' : '-');
+        var p2Score = p2IsWinner ? (state.score ? state.score.split('-')[1].trim() : '1') : (state.completed ? '0' : '-');
+
+        var p1Class = "player-row" + (p1IsWinner ? " winner" : "");
+        var p2Class = "player-row" + (p2IsWinner ? " winner" : "");
+
+        var isP1Placeholder = state.p1 && (state.p1.startsWith("Winner") || state.p1.startsWith("Loser") || state.p1 === "TBD");
+        var isP2Placeholder = state.p2 && (state.p2.startsWith("Winner") || state.p2.startsWith("Loser") || state.p2 === "TBD");
+
+        var p1HTML = '<div class="' + p1Class + '">' +
+          '<div class="player-name-wrap">' +
+            '<span class="knight-icon">♞</span>' +
+            '<span class="' + (isP1Placeholder ? 'player-placeholder' : '') + '">' + state.p1 + '</span>' +
+          '</div>' +
+          '<span class="score-chip">' + p1Score + '</span>' +
+        '</div>';
+
+        var p2HTML = '<div class="' + p2Class + '">' +
+          '<div class="player-name-wrap">' +
+            '<span class="knight-icon">♞</span>' +
+            '<span class="' + (isP2Placeholder ? 'player-placeholder' : '') + '">' + state.p2 + '</span>' +
+          '</div>' +
+          '<span class="score-chip">' + p2Score + '</span>' +
+        '</div>';
+
+        card.innerHTML = meta + p1HTML + p2HTML;
+        cardsWrap.appendChild(card);
+      });
+
+      col.appendChild(cardsWrap);
+      fragment.appendChild(col);
+    });
+
+    host.innerHTML = "";
+    host.appendChild(fragment);
+  }
+
+  function updatePodiumAndBadges() {
+    var catObj = DATA[currentCat];
+
+    var grandTotalMatches = 0;
+    var grandCompletedMatches = 0;
+    var categoryStats = { seniors: { total: 0, completed: 0 }, juniors: { total: 0, completed: 0 } };
+
+    ["seniors", "juniors"].forEach(function(catKey) {
       DATA[catKey].rounds.forEach(function(round) {
         round.matches.forEach(function(m) {
-          map[m.id] = m;
+          grandTotalMatches++;
+          categoryStats[catKey].total++;
+          var s = resolveMatch(catKey, m.id);
+          if (s.completed) {
+            grandCompletedMatches++;
+            categoryStats[catKey].completed++;
+          }
         });
       });
-      return map;
-    }
+    });
 
-    /* Render Bracket DOM into container using DocumentFragment */
-    function renderCategoryDOM(catKey) {
-      var catObj = DATA[catKey];
-      var host = document.getElementById("rounds-" + catKey);
-      if (!host) return;
+    var catTotalMatches = categoryStats[currentCat].total;
+    var catCompletedMatches = categoryStats[currentCat].completed;
 
-      var matchMap = getMatchMap(catKey);
-      var fragment = document.createDocumentFragment();
+    document.getElementById("match-counter-pill").textContent = grandCompletedMatches + "/" + grandTotalMatches;
+    document.getElementById("cat-matches-label").textContent = catObj.name;
+    document.getElementById("cat-matches-pill").textContent = catCompletedMatches + "/" + catTotalMatches;
 
-      catObj.rounds.forEach(function(round) {
-        var col = document.createElement("div");
-        col.className = "round-col";
-
-        var header = document.createElement("div");
-        header.className = "round-header heading";
-        header.innerHTML = '<span>' + round.name + '</span><span class="badge-count">' + round.matches.length + ' GAMES</span>';
-        col.appendChild(header);
-
-        var cardsWrap = document.createElement("div");
-        cardsWrap.className = "round-cards";
-
-        round.matches.forEach(function(m) {
-          var state = resolveMatch(catKey, m.id, matchMap);
-          var card = document.createElement("div");
-          card.className = "match-card";
-
-          var isLive = !state.completed && state.p1 && state.p2 && !state.p1.startsWith("Winner") && !state.p2.startsWith("Winner");
-          var statusTag = state.completed
-            ? '<span class="match-status-tag tag-completed">COMPLETED</span>'
-            : (isLive ? '<span class="match-status-tag tag-live">UPCOMING</span>' : '<span class="match-status-tag tag-upcoming">SCHEDULED</span>');
-
-          var meta = '<div class="match-meta"><span>BOARD ' + m.b + '</span>' + statusTag + '</div>';
-
-          var p1IsWinner = state.winner && state.p1 && state.winner.toLowerCase() === state.p1.toLowerCase();
-          var p2IsWinner = state.winner && state.p2 && state.winner.toLowerCase() === state.p2.toLowerCase();
-
-          var p1Score = p1IsWinner ? (state.score ? state.score.split('-')[0].trim() : '1') : (state.completed ? '0' : '-');
-          var p2Score = p2IsWinner ? (state.score ? state.score.split('-')[1].trim() : '1') : (state.completed ? '0' : '-');
-
-          var p1Class = "player-row" + (p1IsWinner ? " winner" : "");
-          var p2Class = "player-row" + (p2IsWinner ? " winner" : "");
-
-          var isP1Placeholder = state.p1 && (state.p1.startsWith("Winner") || state.p1.startsWith("Loser") || state.p1 === "TBD");
-          var isP2Placeholder = state.p2 && (state.p2.startsWith("Winner") || state.p2.startsWith("Loser") || state.p2 === "TBD");
-
-          var p1HTML = '<div class="' + p1Class + '">' +
-            '<div class="player-name-wrap">' +
-              '<span class="knight-icon">♞</span>' +
-              '<span class="' + (isP1Placeholder ? 'player-placeholder' : '') + '">' + state.p1 + '</span>' +
-            '</div>' +
-            '<span class="score-chip">' + p1Score + '</span>' +
-          '</div>';
-
-          var p2HTML = '<div class="' + p2Class + '">' +
-            '<div class="player-name-wrap">' +
-              '<span class="knight-icon">♞</span>' +
-              '<span class="' + (isP2Placeholder ? 'player-placeholder' : '') + '">' + state.p2 + '</span>' +
-            '</div>' +
-            '<span class="score-chip">' + p2Score + '</span>' +
-          '</div>';
-
-          card.innerHTML = meta + p1HTML + p2HTML;
-          cardsWrap.appendChild(card);
-        });
-
-        col.appendChild(cardsWrap);
-        fragment.appendChild(col);
-      });
-
-      host.innerHTML = "";
-      host.appendChild(fragment);
-    }
-
-    /* Update Podium and Stat Badges */
-    function updatePodiumAndBadges() {
-      var catObj = DATA[currentCat];
-      var matchMap = getMatchMap(currentCat);
-
-      // Overall tournament matches count
-      var grandTotalMatches = 0;
-      var grandCompletedMatches = 0;
-      ["seniors", "juniors"].forEach(function(catKey) {
-        var cMap = getMatchMap(catKey);
-        DATA[catKey].rounds.forEach(function(round) {
-          round.matches.forEach(function(m) {
-            grandTotalMatches++;
-            var s = resolveMatch(catKey, m.id, cMap);
-            if (s.completed) grandCompletedMatches++;
-          });
-        });
-      });
-
-      // Active category matches count
-      var catTotalMatches = 0;
-      var catCompletedMatches = 0;
-      catObj.rounds.forEach(function(round) {
-        round.matches.forEach(function(m) {
-          catTotalMatches++;
-          var state = resolveMatch(currentCat, m.id, matchMap);
-          if (state.completed) catCompletedMatches++;
-        });
-      });
-
-      // Update counters in Header
-      var counterPillEl = document.getElementById("match-counter-pill");
-      var catLabelEl = document.getElementById("cat-matches-label");
-      var catPillEl = document.getElementById("cat-matches-pill");
-      var statusBadgeEl = document.getElementById("tournament-status-badge");
-      var catStatusBadgeEl = document.getElementById("cat-status-badge");
-
-      if (counterPillEl) counterPillEl.textContent = grandCompletedMatches + "/" + grandTotalMatches;
-      if (catLabelEl) catLabelEl.textContent = catObj.name;
-      if (catPillEl) catPillEl.textContent = catCompletedMatches + "/" + catTotalMatches;
-
-      // Tournament Overall Status Badge
-      if (statusBadgeEl) {
-        if (grandCompletedMatches === 0) {
-          statusBadgeEl.className = "badge-upcoming";
-          statusBadgeEl.innerHTML = '<span class="pulse-gray-dot"></span> Scheduled';
-        } else if (grandCompletedMatches < grandTotalMatches) {
-          statusBadgeEl.className = "badge-live";
-          statusBadgeEl.innerHTML = '<span class="pulse-dot"></span> Tournament Active';
-        } else {
-          statusBadgeEl.className = "badge-completed-all";
-          statusBadgeEl.innerHTML = 'Tournament Completed';
-        }
-      }
-
-      // Active Category Status Badge
-      if (catStatusBadgeEl) {
-        if (catCompletedMatches === 0) {
-          catStatusBadgeEl.className = "status-badge-gray";
-          catStatusBadgeEl.textContent = "SCHEDULED";
-        } else if (catCompletedMatches < catTotalMatches) {
-          catStatusBadgeEl.className = "status-badge-blue";
-          catStatusBadgeEl.textContent = "IN PROGRESS";
-        } else {
-          catStatusBadgeEl.className = "status-badge-completed";
-          catStatusBadgeEl.textContent = "COMPLETED";
-        }
-      }
-
-      // Podium update
-      var finalState = resolveMatch(currentCat, "FINAL", matchMap);
-      var bronzeState = resolveMatch(currentCat, "3RD", matchMap);
-
-      var goldEl = document.getElementById("podium-gold");
-      var silverEl = document.getElementById("podium-silver");
-      var bronzeEl = document.getElementById("podium-bronze");
-
-      if (goldEl && silverEl) {
-        if (finalState.completed && finalState.winner) {
-          goldEl.textContent = finalState.winner;
-          silverEl.textContent = finalState.loser || "In Progress";
-        } else {
-          goldEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
-          silverEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
-        }
-      }
-
-      if (bronzeEl) {
-        if (bronzeState.completed && bronzeState.winner) {
-          bronzeEl.textContent = bronzeState.winner;
-        } else {
-          bronzeEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
-        }
+    var statusBadgeEl = document.getElementById("tournament-status-badge");
+    if (statusBadgeEl) {
+      if (grandCompletedMatches === 0) {
+        statusBadgeEl.className = "badge-upcoming";
+        statusBadgeEl.innerHTML = '<span class="pulse-gray-dot"></span> Scheduled';
+      } else if (grandCompletedMatches < grandTotalMatches) {
+        statusBadgeEl.className = "badge-live";
+        statusBadgeEl.innerHTML = '<span class="pulse-dot"></span> Tournament Active';
+      } else {
+        statusBadgeEl.className = "badge-completed-all";
+        statusBadgeEl.innerHTML = 'Tournament Completed';
       }
     }
 
-    /* Switch Tabs - INSTANT 0ms execution without DOM recreation */
-    function switchCategory(cat) {
-      if (currentCat === cat) return;
-      currentCat = cat;
-
-      document.getElementById("tab-seniors").classList.toggle("active", cat === "seniors");
-      document.getElementById("tab-juniors").classList.toggle("active", cat === "juniors");
-
-      // Instantly toggle pre-rendered containers
-      var seniorsHost = document.getElementById("rounds-seniors");
-      var juniorsHost = document.getElementById("rounds-juniors");
-      if (seniorsHost) seniorsHost.style.display = (cat === "seniors") ? "flex" : "none";
-      if (juniorsHost) juniorsHost.style.display = (cat === "juniors") ? "flex" : "none";
-
-      var catObj = DATA[cat];
-      document.getElementById("cat-title-text").textContent = catObj.name;
-      document.getElementById("cat-desc-text").textContent = catObj.desc;
-      document.getElementById("round-count-text").textContent = catObj.rounds.length + " Rounds";
-
-      updatePodiumAndBadges();
+    var catStatusBadgeEl = document.getElementById("cat-status-badge");
+    if (catStatusBadgeEl) {
+      if (catCompletedMatches === 0) {
+        catStatusBadgeEl.className = "status-badge-gray";
+        catStatusBadgeEl.textContent = "SCHEDULED";
+      } else if (catCompletedMatches < catTotalMatches) {
+        catStatusBadgeEl.className = "status-badge-blue";
+        catStatusBadgeEl.textContent = "IN PROGRESS";
+      } else {
+        catStatusBadgeEl.className = "status-badge-completed";
+        catStatusBadgeEl.textContent = "COMPLETED";
+      }
     }
 
-    /* Render everything once when page loads or when new JSON data arrives */
-    function renderAll() {
-      resolveCache = {}; // clear memoization cache on data update
-      renderCategoryDOM("seniors");
-      renderCategoryDOM("juniors");
-      updatePodiumAndBadges();
+    var finalState = resolveMatch(currentCat, "FINAL");
+    var bronzeState = resolveMatch(currentCat, "3RD");
+
+    var goldEl = document.getElementById("podium-gold");
+    var silverEl = document.getElementById("podium-silver");
+    var bronzeEl = document.getElementById("podium-bronze");
+
+    if (goldEl && silverEl) {
+      if (finalState.completed && finalState.winner) {
+        goldEl.textContent = finalState.winner;
+        silverEl.textContent = finalState.loser || "In Progress";
+      } else {
+        goldEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
+        silverEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
+      }
     }
 
-    /* Polling for seniors.json & juniors.json with Promise.all to avoid multiple re-renders */
-    function fetchScores() {
-      var p1 = fetch("./seniors.json?t=" + Date.now())
-        .then(function(res) { return res.json(); })
-        .then(function(json) { scoresData.seniors = json || {}; })
-        .catch(function() {});
+    if (bronzeEl) {
+      if (bronzeState.completed && bronzeState.winner) {
+        bronzeEl.textContent = bronzeState.winner;
+      } else {
+        bronzeEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
+      }
+    }
+  }
 
-      var p2 = fetch("./juniors.json?t=" + Date.now())
-        .then(function(res) { return res.json(); })
-        .then(function(json) { scoresData.juniors = json || {}; })
-        .catch(function() {});
+  /* Instant O(1) tab switcher */
+  function switchCategory(cat) {
+    if (currentCat === cat) return;
+    currentCat = cat;
 
-      Promise.all([p1, p2]).then(function() {
+    document.getElementById("tab-seniors").classList.toggle("active", cat === "seniors");
+    document.getElementById("tab-juniors").classList.toggle("active", cat === "juniors");
+
+    document.getElementById("rounds-seniors").style.display = (cat === "seniors") ? "flex" : "none";
+    document.getElementById("rounds-juniors").style.display = (cat === "juniors") ? "flex" : "none";
+
+    var catObj = DATA[cat];
+    document.getElementById("cat-title-text").textContent = catObj.name;
+    document.getElementById("cat-desc-text").textContent = catObj.desc;
+    document.getElementById("round-count-text").textContent = catObj.rounds.length + " Rounds";
+
+    updatePodiumAndBadges();
+  }
+
+  function renderAll() {
+    resolvedStateCache = {};
+    renderCategoryDOM("seniors");
+    renderCategoryDOM("juniors");
+    updatePodiumAndBadges();
+  }
+
+  function fetchScores() {
+    Promise.all([
+      fetch("./seniors.json?t=" + Date.now()).then(function(res) { return res.json(); }).catch(function() { return null; }),
+      fetch("./juniors.json?t=" + Date.now()).then(function(res) { return res.json(); }).catch(function() { return null; })
+    ]).then(function(results) {
+      var seniorsNew = results[0];
+      var juniorsNew = results[1];
+
+      var seniorsChanged = seniorsNew && JSON.stringify(seniorsNew) !== JSON.stringify(scoresData.seniors);
+      var juniorsChanged = juniorsNew && JSON.stringify(juniorsNew) !== JSON.stringify(scoresData.juniors);
+
+      if (seniorsChanged || juniorsChanged) {
+        if (seniorsNew) scoresData.seniors = seniorsNew;
+        if (juniorsNew) scoresData.juniors = juniorsNew;
         renderAll();
-      });
-    }
+      }
+    });
+  }
 
-    // Initial render and start poll
-    renderAll();
-    fetchScores();
-    setInterval(fetchScores, 15000);
-  </script>
+  renderAll();
+  fetchScores();
+  setInterval(fetchScores, 15000);
+</script>
 </body>
 </html>
