@@ -7,7 +7,7 @@
   <meta name="description" content="Official chess tournament fixtures, knockout bracket, schedules, and live results for Kalpathy Sports Fest 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #040608;
@@ -227,7 +227,6 @@
       display: none;
     }
     .rules-body.open { display: block; }
-    .rules-body ul { padding-left: 18px; margin-top: 6px; }
 
     .rounds-nav-bar {
       display: flex;
@@ -278,16 +277,17 @@
       background: #ff7a00;
     }
 
+    /* Round Column */
     .round-col {
-      flex: 0 0 320px;
-      min-width: 320px;
+      flex: 0 0 330px;
+      min-width: 330px;
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
     @media (min-width: 768px) {
-      .round-col { flex: 0 0 340px; min-width: 340px; }
+      .round-col { flex: 0 0 360px; min-width: 360px; }
     }
     .round-header {
       background: #ff7a00;
@@ -316,6 +316,7 @@
       gap: 10px;
     }
 
+    /* Match Card */
     .match-card {
       background: #090e17;
       border: 1px solid var(--hair);
@@ -349,16 +350,18 @@
     .tag-upcoming { background: rgba(255, 255, 255, 0.05); color: #8892a0; }
     .tag-live { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
 
+    /* Player Slot */
     .player-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 7px 10px;
-      border-radius: 6px;
-      margin-bottom: 4px;
+      padding: 9px 12px;
+      border-radius: 7px;
+      margin-bottom: 5px;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid transparent;
-      font-size: 13px;
+      font-size: 15px;
+      font-weight: 600;
       transition: all .15s ease;
     }
     .player-row:last-child { margin-bottom: 0; }
@@ -366,20 +369,21 @@
       background: var(--win-bg);
       border-color: var(--win-border);
       color: #fff;
-      font-weight: 600;
+      font-weight: 700;
     }
     .player-name-wrap {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-size: 15px;
     }
     .knight-icon {
-      font-size: 14px;
-      opacity: 0.7;
+      font-size: 16px;
+      opacity: 0.75;
     }
     .player-row.winner .knight-icon {
       opacity: 1;
@@ -387,11 +391,11 @@
     }
     .score-chip {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 4px;
-      background: rgba(0, 0, 0, 0.3);
+      padding: 2.5px 8px;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.35);
       color: var(--muted);
     }
     .player-row.winner .score-chip {
@@ -400,7 +404,8 @@
     }
     .player-placeholder {
       font-style: italic;
-      color: #556274;
+      color: #64748b;
+      font-weight: 500;
     }
 
     .podium-bar {
@@ -476,11 +481,11 @@
         <div class="hero-copy">
           <div class="kicker">Kalpathy Sports Fest · 2026</div>
           <h1 class="heading">Chess fixtures</h1>
-          <p class="hero-sub">[26th – 27th September 2026] Seniors (32 players) &amp; Juniors (16 players).</p>
+          <p class="hero-sub">[26th – 27th September 2026] Seniors (32 players) &amp; Juniors (16 players) · 10 AM onwards</p>
           <div class="meta-row">
             <span class="badge-live"><span class="pulse-dot"></span> Tournament Active</span>
             <span style="color:var(--hair-strong)">·</span>
-            <span class="location-text">Location: Old Kalpathy · 5 Boards</span>
+            <span class="location-text">Location: Old Kalpathy · 5 Boards · 10 AM onwards</span>
           </div>
         </div>
       </div>
@@ -497,7 +502,7 @@
     <div class="cat-header">
       <div>
         <h2 class="cat-title heading" id="cat-title-text">Seniors</h2>
-        <p class="cat-desc" id="cat-desc-text">32 players · Knockout · 5 Boards (Old Kalpathy)</p>
+        <p class="cat-desc" id="cat-desc-text">32 players · Knockout · 5 Boards (Old Kalpathy) · 10 AM onwards</p>
       </div>
       <div class="cat-badges">
         <span class="format-badge">5 Mins · Blitz</span>
@@ -505,19 +510,19 @@
       </div>
     </div>
 
+    <!-- Format & Rules Collapsible -->
     <div class="rules-card">
       <button class="rules-toggle" onclick="toggleRules()">
-        <span>+ Format &amp; rules</span>
+        <span>+ Chess Rules</span>
         <span style="font-size:11px;color:var(--muted);font-weight:400;">Official 5-Minute Blitz Rules</span>
       </button>
       <div class="rules-body" id="rules-content">
-        <ul>
-          <li><strong>Format:</strong> Direct Single Elimination Knockout.</li>
-          <li><strong>Time Control:</strong> 5 minutes per player (Blitz Chess), no increment.</li>
-          <li><strong>Tie-break:</strong> 3-minute Armageddon blitz or sudden-death blitz playoff.</li>
-          <li><strong>Boards:</strong> 5 Match Boards active simultaneously at Old Kalpathy venue.</li>
-          <li><strong>Arbiter Decision:</strong> Official Chief Arbiter rulings are final.</li>
-        </ul>
+        <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+          <li><strong>Time Control:</strong> Each player gets 5 minutes for the entire game.</li>
+          <li><strong>Time Out:</strong> A player loses if their clock reaches 0:00, except when the opponent has no possible way to checkmate. In such a case, the game will be declared a draw.</li>
+          <li><strong>Draw &amp; Tie-Break:</strong> If the game ends in a draw, a 3-minute tie-break game will be played.</li>
+          <li><strong>Arbiter Decision:</strong> The Chief Arbiter's decision is final</li>
+        </ol>
       </div>
     </div>
 
@@ -559,7 +564,7 @@
 
   <footer>
     <p>Kalpathy Sports Fest 2026 · Chess Tournament Fixtures</p>
-    <p style="margin-top:4px;font-size:11px;color:#556274;">Location: Old Kalpathy · 5 Boards · Official tournament draws &amp; schedules</p>
+    <p style="margin-top:4px;font-size:11px;color:#556274;">Location: Old Kalpathy · 5 Boards · 10 AM onwards</p>
   </footer>
 
   <script>
@@ -567,63 +572,63 @@
       seniors: {
         id: "seniors",
         name: "Seniors",
-        desc: "32 players · Knockout · 5 Boards (Old Kalpathy)",
+        desc: "32 players · Knockout · 5 Boards (Old Kalpathy) · 10 AM onwards",
         rounds: [
           {
             name: "Round of 32",
             matches: [
-              { id: "M1", b: 1, t: "09:00 AM", p1: "Navaneeth", p2: "Sreenivasan S" },
-              { id: "M2", b: 2, t: "09:00 AM", p1: "Q1", p2: "V A Suryanarayanan" },
-              { id: "M3", b: 3, t: "09:00 AM", p1: "Q2", p2: "Madhumathi Ramajayam" },
-              { id: "M4", b: 4, t: "09:00 AM", p1: "Seshadri", p2: "Eashwer" },
-              { id: "M5", b: 5, t: "09:00 AM", p1: "Rajan PV", p2: "Meera Harihar" },
-              { id: "M6", b: 1, t: "09:30 AM", p1: "Aswath G", p2: "Vignesh S" },
-              { id: "M7", b: 2, t: "09:30 AM", p1: "Sreenath CG", p2: "Divyashri S" },
-              { id: "M8", b: 3, t: "09:30 AM", p1: "Seetha B", p2: "Sreeraj K.R" },
-              { id: "M9", b: 4, t: "09:30 AM", p1: "Subramanian", p2: "Karthik" },
-              { id: "M10", b: 5, t: "09:30 AM", p1: "Janakiraman N", p2: "Yogesh TS" },
-              { id: "M11", b: 1, t: "10:00 AM", p1: "Aswin", p2: "Mahadevan (Mahesh)" },
-              { id: "M12", b: 2, t: "10:00 AM", p1: "Subbu", p2: "Moorthy" },
-              { id: "M13", b: 3, t: "10:00 AM", p1: "Bumika", p2: "SITARAMAN" },
-              { id: "M14", b: 4, t: "10:00 AM", p1: "Sreenivasan P V (Srikanth)", p2: "Rajalakshmi Krishnan" },
-              { id: "M15", b: 5, t: "10:00 AM", p1: "Anand S", p2: "Ramakrishnan N N" },
-              { id: "M16", b: 1, t: "10:30 AM", p1: "Venkitaramanan K.V.", p2: "Abhi" }
+              { id: "M1", b: 1, p1: "Navaneeth", p2: "Sreenivasan S" },
+              { id: "M2", b: 2, p1: "Q1", p2: "V A Suryanarayanan" },
+              { id: "M3", b: 3, p1: "Q2", p2: "Madhumathi Ramajayam" },
+              { id: "M4", b: 4, p1: "Seshadri", p2: "Eashwer" },
+              { id: "M5", b: 5, p1: "Rajan PV", p2: "Meera Harihar" },
+              { id: "M6", b: 1, p1: "Aswath G", p2: "Vignesh S" },
+              { id: "M7", b: 2, p1: "Sreenath CG", p2: "Divyashri S" },
+              { id: "M8", b: 3, p1: "Seetha B", p2: "Sreeraj K.R" },
+              { id: "M9", b: 4, p1: "Subramanian", p2: "Karthik" },
+              { id: "M10", b: 5, p1: "Janakiraman N", p2: "Yogesh TS" },
+              { id: "M11", b: 1, p1: "Aswin", p2: "Mahadevan (Mahesh)" },
+              { id: "M12", b: 2, p1: "Subbu", p2: "Moorthy" },
+              { id: "M13", b: 3, p1: "Bumika", p2: "SITARAMAN" },
+              { id: "M14", b: 4, p1: "Sreenivasan P V (Srikanth)", p2: "Rajalakshmi Krishnan" },
+              { id: "M15", b: 5, p1: "Anand S", p2: "Ramakrishnan N N" },
+              { id: "M16", b: 1, p1: "Venkitaramanan K.V.", p2: "Abhi" }
             ]
           },
           {
             name: "Round of 16",
             matches: [
-              { id: "R16-M1", b: 1, t: "11:00 AM", from: ["M1", "M2"] },
-              { id: "R16-M2", b: 2, t: "11:00 AM", from: ["M3", "M4"] },
-              { id: "R16-M3", b: 3, t: "11:00 AM", from: ["M5", "M6"] },
-              { id: "R16-M4", b: 4, t: "11:00 AM", from: ["M7", "M8"] },
-              { id: "R16-M5", b: 5, t: "11:30 AM", from: ["M9", "M10"] },
-              { id: "R16-M6", b: 1, t: "11:30 AM", from: ["M11", "M12"] },
-              { id: "R16-M7", b: 2, t: "11:30 AM", from: ["M13", "M14"] },
-              { id: "R16-M8", b: 3, t: "11:30 AM", from: ["M15", "M16"] }
+              { id: "R16-M1", b: 1, from: ["M1", "M2"] },
+              { id: "R16-M2", b: 2, from: ["M3", "M4"] },
+              { id: "R16-M3", b: 3, from: ["M5", "M6"] },
+              { id: "R16-M4", b: 4, from: ["M7", "M8"] },
+              { id: "R16-M5", b: 5, from: ["M9", "M10"] },
+              { id: "R16-M6", b: 1, from: ["M11", "M12"] },
+              { id: "R16-M7", b: 2, from: ["M13", "M14"] },
+              { id: "R16-M8", b: 3, from: ["M15", "M16"] }
             ]
           },
           {
             name: "Quarterfinals",
             matches: [
-              { id: "QF1", b: 1, t: "02:00 PM", from: ["R16-M1", "R16-M2"] },
-              { id: "QF2", b: 2, t: "02:00 PM", from: ["R16-M3", "R16-M4"] },
-              { id: "QF3", b: 3, t: "02:30 PM", from: ["R16-M5", "R16-M6"] },
-              { id: "QF4", b: 4, t: "02:30 PM", from: ["R16-M7", "R16-M8"] }
+              { id: "QF1", b: 1, from: ["R16-M1", "R16-M2"] },
+              { id: "QF2", b: 2, from: ["R16-M3", "R16-M4"] },
+              { id: "QF3", b: 3, from: ["R16-M5", "R16-M6"] },
+              { id: "QF4", b: 4, from: ["R16-M7", "R16-M8"] }
             ]
           },
           {
             name: "Semifinals",
             matches: [
-              { id: "SF1", b: 1, t: "03:30 PM", from: ["QF1", "QF2"] },
-              { id: "SF2", b: 2, t: "03:30 PM", from: ["QF3", "QF4"] }
+              { id: "SF1", b: 1, from: ["QF1", "QF2"] },
+              { id: "SF2", b: 2, from: ["QF3", "QF4"] }
             ]
           },
           {
             name: "Final & 3rd Place",
             matches: [
-              { id: "FINAL", b: 1, t: "04:30 PM", isFinal: true, from: ["SF1", "SF2"] },
-              { id: "3RD", b: 2, t: "04:30 PM", isBronze: true, from: ["SF1", "SF2"] }
+              { id: "FINAL", b: 1, isFinal: true, from: ["SF1", "SF2"] },
+              { id: "3RD", b: 2, isBronze: true, from: ["SF1", "SF2"] }
             ]
           }
         ]
@@ -631,42 +636,42 @@
       juniors: {
         id: "juniors",
         name: "Juniors",
-        desc: "16 players · Knockout · 5 Boards (Old Kalpathy)",
+        desc: "16 players · Knockout · 5 Boards (Old Kalpathy) · 10 AM onwards",
         rounds: [
           {
             name: "Round of 16",
             matches: [
-              { id: "R1-1", b: 1, t: "09:00 AM", p1: "ADITHYA", p2: "Aswina" },
-              { id: "R1-2", b: 2, t: "09:00 AM", p1: "Nandan", p2: "L.Adwaidmuthukrishnan" },
-              { id: "R1-3", b: 3, t: "09:00 AM", p1: "Sriniketh. S", p2: "Siddharth Sreekumar" },
-              { id: "R1-4", b: 4, t: "09:00 AM", p1: "Rishi Santhosh", p2: "RISHIKESH" },
-              { id: "R1-5", b: 5, t: "09:30 AM", p1: "Aayush Vijayan", p2: "Sreerag" },
-              { id: "R1-6", b: 1, t: "09:30 AM", p1: "Sidharth", p2: "Rithul. K" },
-              { id: "R1-7", b: 2, t: "09:30 AM", p1: "Badrinath PB", p2: "Viresh Balasubramanian R" },
-              { id: "R1-8", b: 3, t: "09:30 AM", p1: "Sreehari", p2: "Akhilesh" }
+              { id: "R1-1", b: 1, p1: "ADITHYA", p2: "Aswina" },
+              { id: "R1-2", b: 2, p1: "Nandan", p2: "L.Adwaidmuthukrishnan" },
+              { id: "R1-3", b: 3, p1: "Sriniketh. S", p2: "Siddharth Sreekumar" },
+              { id: "R1-4", b: 4, p1: "Rishi Santhosh", p2: "RISHIKESH" },
+              { id: "R1-5", b: 5, p1: "Aayush Vijayan", p2: "Sreerag" },
+              { id: "R1-6", b: 1, p1: "Sidharth", p2: "Rithul. K" },
+              { id: "R1-7", b: 2, p1: "Badrinath PB", p2: "Viresh Balasubramanian R" },
+              { id: "R1-8", b: 3, p1: "Sreehari", p2: "Akhilesh" }
             ]
           },
           {
             name: "Quarterfinals",
             matches: [
-              { id: "QF1", b: 1, t: "11:00 AM", from: ["R1-1", "R1-2"] },
-              { id: "QF2", b: 2, t: "11:00 AM", from: ["R1-3", "R1-4"] },
-              { id: "QF3", b: 3, t: "11:30 AM", from: ["R1-5", "R1-6"] },
-              { id: "QF4", b: 4, t: "11:30 AM", from: ["R1-7", "R1-8"] }
+              { id: "QF1", b: 1, from: ["R1-1", "R1-2"] },
+              { id: "QF2", b: 2, from: ["R1-3", "R1-4"] },
+              { id: "QF3", b: 3, from: ["R1-5", "R1-6"] },
+              { id: "QF4", b: 4, from: ["R1-7", "R1-8"] }
             ]
           },
           {
             name: "Semifinals",
             matches: [
-              { id: "SF1", b: 1, t: "02:00 PM", from: ["QF1", "QF2"] },
-              { id: "SF2", b: 2, t: "02:00 PM", from: ["QF3", "QF4"] }
+              { id: "SF1", b: 1, from: ["QF1", "QF2"] },
+              { id: "SF2", b: 2, from: ["QF3", "QF4"] }
             ]
           },
           {
             name: "Final & 3rd Place",
             matches: [
-              { id: "FINAL", b: 1, t: "03:30 PM", isFinal: true, from: ["SF1", "SF2"] },
-              { id: "3RD", b: 2, t: "03:30 PM", isBronze: true, from: ["SF1", "SF2"] }
+              { id: "FINAL", b: 1, isFinal: true, from: ["SF1", "SF2"] },
+              { id: "3RD", b: 2, isBronze: true, from: ["SF1", "SF2"] }
             ]
           }
         ]
@@ -771,7 +776,7 @@
           var isLive = !state.completed && state.p1 && state.p2 && !state.p1.startsWith("Winner") && !state.p2.startsWith("Winner");
           var statusTag = state.completed ? '<span class="match-status-tag tag-completed">COMPLETED</span>' : (isLive ? '<span class="match-status-tag tag-live">UPCOMING</span>' : '<span class="match-status-tag tag-upcoming">SCHEDULED</span>');
 
-          var meta = '<div class="match-meta"><span>BOARD ' + m.b + ' · ' + m.t + '</span>' + statusTag + '</div>';
+          var meta = '<div class="match-meta"><span>BOARD ' + m.b + '</span>' + statusTag + '</div>';
 
           var p1IsWinner = state.winner && state.p1 && state.winner.toLowerCase() === state.p1.toLowerCase();
           var p2IsWinner = state.winner && state.p2 && state.winner.toLowerCase() === state.p2.toLowerCase();
