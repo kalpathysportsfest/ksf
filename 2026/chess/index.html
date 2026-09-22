@@ -680,7 +680,7 @@
     <p style="margin-top:4px;font-size:11px;color:#556274;">Location: Old Kalpathy · 5 Boards · Official tournament draws &amp; schedules</p>
   </footer>
 
-  <script>
+<script>
   /* Tournament Initial Pairings */
   var DATA = {
     seniors: {
@@ -795,29 +795,53 @@
   var currentCat = "seniors";
   var scoresData = { seniors: {}, juniors: {} };
 
-  /* Cache prebuilt match maps & resolved states to avoid recalculating during UI interactions */
-  var matchMaps = {
-    seniors: getMatchMap("seniors"),
-    juniors: getMatchMap("juniors")
-  };
-  var resolvedStateCache = {};
-
-  function toggleRules() {
-    var el = document.getElementById("rules-content");
-    if (el) el.classList.toggle("open");
-  }
-
-  function slideRounds(offset) {
-    var row = document.getElementById("rounds-" + currentCat);
-    if (row) row.scrollBy({ left: offset, behavior: "smooth" });
-  }
-
-  function getMatchMap(catKey) {
+  // Pre-compiled match lookup maps
+  function buildMatchMap(catKey) {
     var map = {};
     DATA[catKey].rounds.forEach(function(round) {
       round.matches.forEach(function(m) { map[m.id] = m; });
     });
     return map;
+  }
+
+  var matchMaps = {
+    seniors: buildMatchMap("seniors"),
+    juniors: buildMatchMap("juniors")
+  };
+
+  var resolvedStateCache = {};
+
+  // Cached DOM Node References (prevents query queries on tab switch)
+  var domNodes = {};
+
+  function initDOMCache() {
+    domNodes = {
+      tabSeniors: document.getElementById("tab-seniors"),
+      tabJuniors: document.getElementById("tab-juniors"),
+      roundsSeniors: document.getElementById("rounds-seniors"),
+      roundsJuniors: document.getElementById("rounds-juniors"),
+      catTitleText: document.getElementById("cat-title-text"),
+      catDescText: document.getElementById("cat-desc-text"),
+      roundCountText: document.getElementById("round-count-text"),
+      matchCounterPill: document.getElementById("match-counter-pill"),
+      catMatchesLabel: document.getElementById("cat-matches-label"),
+      catMatchesPill: document.getElementById("cat-matches-pill"),
+      tournamentStatusBadge: document.getElementById("tournament-status-badge"),
+      catStatusBadge: document.getElementById("cat-status-badge"),
+      podiumGold: document.getElementById("podium-gold"),
+      podiumSilver: document.getElementById("podium-silver"),
+      podiumBronze: document.getElementById("podium-bronze"),
+      rulesContent: document.getElementById("rules-content")
+    };
+  }
+
+  function toggleRules() {
+    if (domNodes.rulesContent) domNodes.rulesContent.classList.toggle("open");
+  }
+
+  function slideRounds(offset) {
+    var row = currentCat === "seniors" ? domNodes.roundsSeniors : domNodes.roundsJuniors;
+    if (row) row.scrollBy({ left: offset, behavior: "smooth" });
   }
 
   function resolveMatch(cat, matchId) {
@@ -828,8 +852,7 @@
     var winnerName = scoreEntry.winner || null;
     var scoreVal = scoreEntry.score || null;
 
-    var matchMap = matchMaps[cat];
-    var m = matchMap[matchId];
+    var m = matchMaps[cat][matchId];
     if (!m) {
       var emptyRes = { p1: "TBD", p2: "TBD", winner: null, loser: null, score: null, completed: false };
       resolvedStateCache[cacheKey] = emptyRes;
@@ -873,7 +896,7 @@
 
   function renderCategoryDOM(catKey) {
     var catObj = DATA[catKey];
-    var host = document.getElementById("rounds-" + catKey);
+    var host = catKey === "seniors" ? domNodes.roundsSeniors : domNodes.roundsJuniors;
     if (!host) return;
 
     var fragment = document.createDocumentFragment();
@@ -966,81 +989,78 @@
     var catTotalMatches = categoryStats[currentCat].total;
     var catCompletedMatches = categoryStats[currentCat].completed;
 
-    document.getElementById("match-counter-pill").textContent = grandCompletedMatches + "/" + grandTotalMatches;
-    document.getElementById("cat-matches-label").textContent = catObj.name;
-    document.getElementById("cat-matches-pill").textContent = catCompletedMatches + "/" + catTotalMatches;
+    domNodes.matchCounterPill.textContent = grandCompletedMatches + "/" + grandTotalMatches;
+    domNodes.catMatchesLabel.textContent = catObj.name;
+    domNodes.catMatchesPill.textContent = catCompletedMatches + "/" + catTotalMatches;
 
-    var statusBadgeEl = document.getElementById("tournament-status-badge");
-    if (statusBadgeEl) {
+    if (domNodes.tournamentStatusBadge) {
       if (grandCompletedMatches === 0) {
-        statusBadgeEl.className = "badge-upcoming";
-        statusBadgeEl.innerHTML = '<span class="pulse-gray-dot"></span> Scheduled';
+        domNodes.tournamentStatusBadge.className = "badge-upcoming";
+        domNodes.tournamentStatusBadge.innerHTML = '<span class="pulse-gray-dot"></span> Scheduled';
       } else if (grandCompletedMatches < grandTotalMatches) {
-        statusBadgeEl.className = "badge-live";
-        statusBadgeEl.innerHTML = '<span class="pulse-dot"></span> Tournament Active';
+        domNodes.tournamentStatusBadge.className = "badge-live";
+        domNodes.tournamentStatusBadge.innerHTML = '<span class="pulse-dot"></span> Tournament Active';
       } else {
-        statusBadgeEl.className = "badge-completed-all";
-        statusBadgeEl.innerHTML = 'Tournament Completed';
+        domNodes.tournamentStatusBadge.className = "badge-completed-all";
+        domNodes.tournamentStatusBadge.innerHTML = 'Tournament Completed';
       }
     }
 
-    var catStatusBadgeEl = document.getElementById("cat-status-badge");
-    if (catStatusBadgeEl) {
+    if (domNodes.catStatusBadge) {
       if (catCompletedMatches === 0) {
-        catStatusBadgeEl.className = "status-badge-gray";
-        catStatusBadgeEl.textContent = "SCHEDULED";
+        domNodes.catStatusBadge.className = "status-badge-gray";
+        domNodes.catStatusBadge.textContent = "SCHEDULED";
       } else if (catCompletedMatches < catTotalMatches) {
-        catStatusBadgeEl.className = "status-badge-blue";
-        catStatusBadgeEl.textContent = "IN PROGRESS";
+        domNodes.catStatusBadge.className = "status-badge-blue";
+        domNodes.catStatusBadge.textContent = "IN PROGRESS";
       } else {
-        catStatusBadgeEl.className = "status-badge-completed";
-        catStatusBadgeEl.textContent = "COMPLETED";
+        domNodes.catStatusBadge.className = "status-badge-completed";
+        domNodes.catStatusBadge.textContent = "COMPLETED";
       }
     }
 
     var finalState = resolveMatch(currentCat, "FINAL");
     var bronzeState = resolveMatch(currentCat, "3RD");
 
-    var goldEl = document.getElementById("podium-gold");
-    var silverEl = document.getElementById("podium-silver");
-    var bronzeEl = document.getElementById("podium-bronze");
-
-    if (goldEl && silverEl) {
+    if (domNodes.podiumGold && domNodes.podiumSilver) {
       if (finalState.completed && finalState.winner) {
-        goldEl.textContent = finalState.winner;
-        silverEl.textContent = finalState.loser || "In Progress";
+        domNodes.podiumGold.textContent = finalState.winner;
+        domNodes.podiumSilver.textContent = finalState.loser || "In Progress";
       } else {
-        goldEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
-        silverEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
+        domNodes.podiumGold.innerHTML = '<span class="in-progress-text">In Progress</span>';
+        domNodes.podiumSilver.innerHTML = '<span class="in-progress-text">In Progress</span>';
       }
     }
 
-    if (bronzeEl) {
+    if (domNodes.podiumBronze) {
       if (bronzeState.completed && bronzeState.winner) {
-        bronzeEl.textContent = bronzeState.winner;
+        domNodes.podiumBronze.textContent = bronzeState.winner;
       } else {
-        bronzeEl.innerHTML = '<span class="in-progress-text">In Progress</span>';
+        domNodes.podiumBronze.innerHTML = '<span class="in-progress-text">In Progress</span>';
       }
     }
   }
 
-  /* Instant O(1) tab switcher */
+  /* True 0ms Instant Tab Switch */
   function switchCategory(cat) {
     if (currentCat === cat) return;
     currentCat = cat;
 
-    document.getElementById("tab-seniors").classList.toggle("active", cat === "seniors");
-    document.getElementById("tab-juniors").classList.toggle("active", cat === "juniors");
+    var isSeniors = cat === "seniors";
 
-    document.getElementById("rounds-seniors").style.display = (cat === "seniors") ? "flex" : "none";
-    document.getElementById("rounds-juniors").style.display = (cat === "juniors") ? "flex" : "none";
+    domNodes.tabSeniors.classList.toggle("active", isSeniors);
+    domNodes.tabJuniors.classList.toggle("active", !isSeniors);
+
+    domNodes.roundsSeniors.style.display = isSeniors ? "flex" : "none";
+    domNodes.roundsJuniors.style.display = isSeniors ? "none" : "flex";
 
     var catObj = DATA[cat];
-    document.getElementById("cat-title-text").textContent = catObj.name;
-    document.getElementById("cat-desc-text").textContent = catObj.desc;
-    document.getElementById("round-count-text").textContent = catObj.rounds.length + " Rounds";
+    domNodes.catTitleText.textContent = catObj.name;
+    domNodes.catDescText.textContent = catObj.desc;
+    domNodes.roundCountText.textContent = catObj.rounds.length + " Rounds";
 
-    updatePodiumAndBadges();
+    // Batch layout updates on the next frame to completely eliminate click lag
+    requestAnimationFrame(updatePodiumAndBadges);
   }
 
   function renderAll() {
@@ -1069,6 +1089,8 @@
     });
   }
 
+  // Initialize DOM cache and render
+  initDOMCache();
   renderAll();
   fetchScores();
   setInterval(fetchScores, 15000);
