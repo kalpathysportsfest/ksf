@@ -795,7 +795,6 @@
   var currentCat = "seniors";
   var scoresData = { seniors: {}, juniors: {} };
 
-  // Pre-compiled match lookup maps
   function buildMatchMap(catKey) {
     var map = {};
     DATA[catKey].rounds.forEach(function(round) {
@@ -811,7 +810,6 @@
 
   var resolvedStateCache = {};
 
-  // Cached DOM Node References (prevents query queries on tab switch)
   var domNodes = {};
 
   function initDOMCache() {
@@ -824,8 +822,7 @@
       catDescText: document.getElementById("cat-desc-text"),
       roundCountText: document.getElementById("round-count-text"),
       matchCounterPill: document.getElementById("match-counter-pill"),
-      catMatchesLabel: document.getElementById("cat-matches-label"),
-      catMatchesPill: document.getElementById("cat-matches-pill"),
+      catMatchesBadge: document.getElementById("cat-matches-badge"),
       tournamentStatusBadge: document.getElementById("tournament-status-badge"),
       catStatusBadge: document.getElementById("cat-status-badge"),
       podiumGold: document.getElementById("podium-gold"),
@@ -833,6 +830,10 @@
       podiumBronze: document.getElementById("podium-bronze"),
       rulesContent: document.getElementById("rules-content")
     };
+
+    // Remove individual category level badge element entirely if present in DOM
+    var catBadgeEl = document.querySelector(".badge-cat-matches");
+    if (catBadgeEl) catBadgeEl.remove();
   }
 
   function toggleRules() {
@@ -966,32 +967,22 @@
   }
 
   function updatePodiumAndBadges() {
-    var catObj = DATA[currentCat];
-
     var grandTotalMatches = 0;
     var grandCompletedMatches = 0;
-    var categoryStats = { seniors: { total: 0, completed: 0 }, juniors: { total: 0, completed: 0 } };
 
     ["seniors", "juniors"].forEach(function(catKey) {
       DATA[catKey].rounds.forEach(function(round) {
         round.matches.forEach(function(m) {
           grandTotalMatches++;
-          categoryStats[catKey].total++;
           var s = resolveMatch(catKey, m.id);
-          if (s.completed) {
-            grandCompletedMatches++;
-            categoryStats[catKey].completed++;
-          }
+          if (s.completed) grandCompletedMatches++;
         });
       });
     });
 
-    var catTotalMatches = categoryStats[currentCat].total;
-    var catCompletedMatches = categoryStats[currentCat].completed;
-
-    domNodes.matchCounterPill.textContent = grandCompletedMatches + "/" + grandTotalMatches;
-    domNodes.catMatchesLabel.textContent = catObj.name;
-    domNodes.catMatchesPill.textContent = catCompletedMatches + "/" + catTotalMatches;
+    if (domNodes.matchCounterPill) {
+      domNodes.matchCounterPill.textContent = grandCompletedMatches + "/" + grandTotalMatches;
+    }
 
     if (domNodes.tournamentStatusBadge) {
       if (grandCompletedMatches === 0) {
@@ -1003,19 +994,6 @@
       } else {
         domNodes.tournamentStatusBadge.className = "badge-completed-all";
         domNodes.tournamentStatusBadge.innerHTML = 'Tournament Completed';
-      }
-    }
-
-    if (domNodes.catStatusBadge) {
-      if (catCompletedMatches === 0) {
-        domNodes.catStatusBadge.className = "status-badge-gray";
-        domNodes.catStatusBadge.textContent = "SCHEDULED";
-      } else if (catCompletedMatches < catTotalMatches) {
-        domNodes.catStatusBadge.className = "status-badge-blue";
-        domNodes.catStatusBadge.textContent = "IN PROGRESS";
-      } else {
-        domNodes.catStatusBadge.className = "status-badge-completed";
-        domNodes.catStatusBadge.textContent = "COMPLETED";
       }
     }
 
@@ -1041,7 +1019,7 @@
     }
   }
 
-  /* True 0ms Instant Tab Switch */
+  /* Instant zero-computation tab switch */
   function switchCategory(cat) {
     if (currentCat === cat) return;
     currentCat = cat;
@@ -1059,8 +1037,7 @@
     domNodes.catDescText.textContent = catObj.desc;
     domNodes.roundCountText.textContent = catObj.rounds.length + " Rounds";
 
-    // Batch layout updates on the next frame to completely eliminate click lag
-    requestAnimationFrame(updatePodiumAndBadges);
+    updatePodiumAndBadges();
   }
 
   function renderAll() {
@@ -1089,7 +1066,6 @@
     });
   }
 
-  // Initialize DOM cache and render
   initDOMCache();
   renderAll();
   fetchScores();
