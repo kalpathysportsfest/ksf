@@ -1,0 +1,55 @@
+{
+  "id": "open-mens",
+  "name": "Above-18 Men’s",
+  "subtitle": "16 Players · Premier Knockout",
+  "chip": "Rapid · 30m + 15s",
+  "type": "knockout",
+  "timeControl": "30 min + 15s increment",
+  "rulesFormat": [
+    "Top-flight 16-player knockout tournament for adult men.",
+    "FIDE digital clocks with 30-minute base time and 15s bonus per move.",
+    "Arbiter registers winner (1-0, 0-1, or tiebreak decider) to trigger bracket advancement."
+  ],
+  "rounds": [
+    {
+      "name": "Round of 16",
+      "time": "10:00 AM",
+      "matches": [
+        { "id": "MEN-R1-B1", "board": "Board 1", "time": "10:00 AM", "a": "V. Narayanaswamy", "b": "S. Ramachandran", "winner": "A", "resultText": "1 - 0" },
+        { "id": "MEN-R1-B2", "board": "Board 2", "time": "10:00 AM", "a": "Krishnakumar K.", "b": "Subramanian Mani", "winner": "B", "resultText": "0 - 1" },
+        { "id": "MEN-R1-B3", "board": "Board 3", "time": "10:00 AM", "a": "Venkatesh Iyer", "b": "Hariharan S." },
+        { "id": "MEN-R1-B4", "board": "Board 4", "time": "10:00 AM", "a": "Dr. Anand Viswanathan", "b": "Balaji K.V." },
+        { "id": "MEN-R1-B5", "board": "Board 5", "time": "10:00 AM", "a": "Jayashankar P.", "b": "Rajagopal S." },
+        { "id": "MEN-R1-B6", "board": "Board 6", "time": "10:00 AM", "a": "Girish Kumar", "b": "Prasanna Venkatesh" },
+        { "id": "MEN-R1-B7", "board": "Board 7", "time": "10:00 AM", "a": "Suresh Babu", "b": "Aravind Swaminathan" },
+        { "id": "MEN-R1-B8", "board": "Board 8", "time": "10:00 AM", "a": "K.P. Chandrashekar", "b": "Mahesh Narayanan" }
+      ]
+    },
+    {
+      "name": "Quarterfinals",
+      "time": "12:30 PM",
+      "matches": [
+        { "id": "MEN-QF1", "board": "Board 1", "time": "12:30 PM", "a": { "ref": "MEN-R1-B1" }, "b": { "ref": "MEN-R1-B2" } },
+        { "id": "MEN-QF2", "board": "Board 2", "time": "12:30 PM", "a": { "ref": "MEN-R1-B3" }, "b": { "ref": "MEN-R1-B4" } },
+        { "id": "MEN-QF3", "board": "Board 3", "time": "12:30 PM", "a": { "ref": "MEN-R1-B5" }, "b": { "ref": "MEN-R1-B6" } },
+        { "id": "MEN-QF4", "board": "Board 4", "time": "12:30 PM", "a": { "ref": "MEN-R1-B7" }, "b": { "ref": "MEN-R1-B8" } }
+      ]
+    },
+    {
+      "name": "Semifinals",
+      "time": "03:00 PM",
+      "matches": [
+        { "id": "MEN-SF1", "board": "Board 1", "time": "03:00 PM", "a": { "ref": "MEN-QF1" }, "b": { "ref": "MEN-QF2" } },
+        { "id": "MEN-SF2", "board": "Board 2", "time": "03:00 PM", "a": { "ref": "MEN-QF3" }, "b": { "ref": "MEN-QF4" } }
+      ]
+    },
+    {
+      "name": "Podium & Finals",
+      "time": "05:00 PM",
+      "matches": [
+        { "id": "MEN-3RD", "board": "Board 2", "time": "04:45 PM", "a": { "ref": "MEN-SF1", "loser": true }, "b": { "ref": "MEN-SF2", "loser": true } },
+        { "id": "MEN-FINAL", "board": "Board 1", "time": "05:15 PM", "a": { "ref": "MEN-SF1" }, "b": { "ref": "MEN-SF2" } }
+      ]
+    }
+  ]
+}
