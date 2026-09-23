@@ -879,8 +879,6 @@
       }
 
       var scoreEntry = (scoresData[cat] && scoresData[cat][matchId]) || {};
-      var winnerName = scoreEntry.winner || null;
-      var scoreVal = scoreEntry.score || null;
 
       var m = matchMap[matchId];
       if (!m) {
@@ -903,6 +901,31 @@
           p1 = mPrev1.winner || ("Winner of " + m.from[0]);
           p2 = mPrev2.winner || ("Winner of " + m.from[1]);
         }
+      }
+
+      // Flexible resolution for winner key (1 / 2, "p1" / "p2", true / false, or explicit name)
+      var winnerKey = null;
+      var scoreVal = null;
+
+      if (typeof scoreEntry === "object" && scoreEntry !== null) {
+        if (scoreEntry.won !== undefined) winnerKey = scoreEntry.won;
+        else if (scoreEntry.winner !== undefined) winnerKey = scoreEntry.winner;
+        scoreVal = scoreEntry.score || null;
+      } else {
+        winnerKey = scoreEntry;
+      }
+
+      var winnerName = null;
+      if (winnerKey === 1 || winnerKey === "1" || winnerKey === "p1" || winnerKey === true || winnerKey === "yes") {
+        if (p1 && !p1.startsWith("Winner") && !p1.startsWith("Loser") && p1 !== "TBD") {
+          winnerName = p1;
+        }
+      } else if (winnerKey === 2 || winnerKey === "2" || winnerKey === "p2" || winnerKey === false || winnerKey === "no") {
+        if (p2 && !p2.startsWith("Winner") && !p2.startsWith("Loser") && p2 !== "TBD") {
+          winnerName = p2;
+        }
+      } else if (typeof winnerKey === "string" && winnerKey.trim() !== "") {
+        winnerName = winnerKey;
       }
 
       var loserName = null;
