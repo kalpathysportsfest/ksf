@@ -580,10 +580,10 @@
         <div class="hero-copy">
           <div class="kicker">Kalpathy Sports Fest · 2026</div>
           <h1 class="heading">Chess fixtures</h1>
-          <p class="hero-sub">[26th September 2026] Seniors (32 players) &amp; Juniors (16 players) · 9:00 AM onwards</p>
+          <p class="hero-sub">[26th September 2026] Seniors (32 players) &amp; Juniors (24 players) · 9:00 AM onwards</p>
           <div class="meta-row">
             <span id="tournament-status-badge" class="badge-upcoming"><span class="pulse-gray-dot"></span> Scheduled</span>
-            <span class="badge-matches"><strong id="match-counter-pill" class="mono">0/48</strong> Total Matches</span>
+            <span class="badge-matches"><strong id="match-counter-pill" class="mono">0/54</strong> Total Matches</span>
             <span style="color:var(--hair-strong)">·</span>
             <span class="location-text">Location: PKGBS Madom, Old Kalpathy · 5 Boards · 9:00 AM onwards</span>
           </div>
@@ -671,7 +671,7 @@
       <div class="cat-header">
         <div>
           <h2 class="cat-title heading">Juniors</h2>
-          <p class="cat-desc">16 players · Knockout · 5 Boards (Old Kalpathy) · 9:00 AM onwards</p>
+          <p class="cat-desc">24 players · Knockout · 5 Boards (Old Kalpathy) · 9:00 AM onwards</p>
         </div>
         <div class="cat-badges">
           <span class="format-badge">5 Mins · Blitz</span>
@@ -680,7 +680,7 @@
       </div>
 
       <div class="rounds-nav-bar">
-        <span>↔ Slide left/right to view rounds · <span style="color:#ff9d3b;font-weight:600;">4 Rounds</span></span>
+        <span>↔ Slide left/right to view rounds · <span style="color:#ff9d3b;font-weight:600;">5 Rounds</span></span>
         <div class="slide-btns">
           <button class="nav-arrow-btn" onclick="slideRounds('juniors', -320)">‹</button>
           <button class="nav-arrow-btn" onclick="slideRounds('juniors', 320)">›</button>
@@ -792,10 +792,10 @@
       juniors: {
         id: "juniors",
         name: "Juniors",
-        desc: "16 players · Knockout · 5 Boards (Old Kalpathy) · 9:00 AM onwards",
+        desc: "24 players · Knockout · 5 Boards (Old Kalpathy) · 9:00 AM onwards",
         rounds: [
           {
-            name: "Round of 16",
+            name: "Round 1",
             matches: [
               { id: "R1-1", b: 1, p1: "ADITHYA", p2: "Aswina" },
               { id: "R1-2", b: 2, p1: "Nandan", p2: "L.Adwaidmuthukrishnan" },
@@ -808,12 +808,25 @@
             ]
           },
           {
+            name: "Round of 16",
+            matches: [
+              { id: "R2-1", b: 1, from: ["R1-1"], p2: "Ramjith A" },
+              { id: "R2-2", b: 2, from: ["R1-2"], p2: "Ayush" },
+              { id: "R2-3", b: 3, from: ["R1-3"], p2: "Adwaith Seshadri R" },
+              { id: "R2-4", b: 4, from: ["R1-4"], p2: "R N Navaneeth Krishna" },
+              { id: "R2-5", b: 5, from: ["R1-5"], p2: "Arjith.A" },
+              { id: "R2-6", b: 1, from: ["R1-6"], p2: "P S Srinivasan" },
+              { id: "R2-7", b: 2, from: ["R1-7"], p2: "G S Harinarayan" },
+              { id: "R2-8", b: 3, from: ["R1-8"], p2: "K.S.Lakshana shree" }
+            ]
+          },
+          {
             name: "Quarterfinals",
             matches: [
-              { id: "QF1", b: 1, from: ["R1-1", "R1-2"] },
-              { id: "QF2", b: 2, from: ["R1-3", "R1-4"] },
-              { id: "QF3", b: 3, from: ["R1-5", "R1-6"] },
-              { id: "QF4", b: 4, from: ["R1-7", "R1-8"] }
+              { id: "QF1", b: 1, from: ["R2-1", "R2-2"] },
+              { id: "QF2", b: 2, from: ["R2-3", "R2-4"] },
+              { id: "QF3", b: 3, from: ["R2-5", "R2-6"] },
+              { id: "QF4", b: 4, from: ["R2-7", "R2-8"] }
             ]
           },
           {
@@ -891,15 +904,20 @@
       var p2 = m.p2;
 
       if (m.from) {
-        var mPrev1 = resolveMatch(cat, m.from[0], matchMap);
-        var mPrev2 = resolveMatch(cat, m.from[1], matchMap);
+        if (m.from.length === 1) {
+          var mPrev = resolveMatch(cat, m.from[0], matchMap);
+          p1 = mPrev.winner || ("Winner of " + m.from[0]);
+        } else if (m.from.length === 2) {
+          var mPrev1 = resolveMatch(cat, m.from[0], matchMap);
+          var mPrev2 = resolveMatch(cat, m.from[1], matchMap);
 
-        if (m.isBronze) {
-          p1 = mPrev1.loser || ("Loser of " + m.from[0]);
-          p2 = mPrev2.loser || ("Loser of " + m.from[1]);
-        } else {
-          p1 = mPrev1.winner || ("Winner of " + m.from[0]);
-          p2 = mPrev2.winner || ("Winner of " + m.from[1]);
+          if (m.isBronze) {
+            p1 = mPrev1.loser || ("Loser of " + m.from[0]);
+            p2 = mPrev2.loser || ("Loser of " + m.from[1]);
+          } else {
+            p1 = mPrev1.winner || ("Winner of " + m.from[0]);
+            p2 = mPrev2.winner || ("Winner of " + m.from[1]);
+          }
         }
       }
 
