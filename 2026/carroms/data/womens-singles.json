@@ -1,0 +1,24 @@
+{
+  "id": "womens-singles",
+  "name": "Women's Singles",
+  "subtitle": "Knockout Draw · Carroms",
+  "chip": "Knockout",
+  "type": "knockout",
+  "rounds": [
+    {
+      "name": "Semi-Finals",
+      "matches": [
+        { "id": "SF1", "a": "JAYASHREE", "b": "SEETHA B" },
+        { "id": "SF2", "a": "GAYATHRI", "b": "SAKTHI" },
+        { "id": "SF3", "a": "SHANTHI", "b": "SF1:loser" },
+        { "id": "SF4", "a": "KAVITHA", "b": "SF2:loser" }
+      ]
+    },
+    {
+      "name": "Finals",
+      "matches": [
+        { "id": "FINAL", "a": "SF1", "b": "SF2" }
+      ]
+    }
+  ]
+}
