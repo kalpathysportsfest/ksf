@@ -8,7 +8,7 @@
     {
       "name": "Round 1",
       "matches": [
-        { "id": "R1-M1", "a": "SUBRAMANIAN / HARI", "b": "NAVANEETH / RAMAKRISHNAN NN", "boards": [[25,12], [25, 20]] },
+        { "id": "R1-M1", "a": "SUBRAMANIAN (Chuppa) / GANESH", "b": "NAVANEETH / RAMAKRISHNAN NN", "boards": [[25,12], [25, 20]] },
         { "id": "R1-M2", "a": "UDITH / CT", "b": "ASWATH G / YOGESH", "boards": [] },
         { "id": "R1-M3", "a": "GOKUL / MANIKANDAN M", "b": "MANOJ / KIRAN", "boards": [] },
         { "id": "R1-M4", "a": "CS MAHESH / GOPALAKRISHNAN", "b": "ARUN / VISHAL", "boards": [] },
