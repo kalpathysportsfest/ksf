@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KSF 2026 — Carroms Fixtures</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Interactive carroms tournament fixtures for Kalpathy Sports Fest 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --court-deep: #030508;
+  --court-mid: #0b1633;
+  --court-line: #ffffff;
+
+  --card: #080d18;
+
+  --gold: #ff7a00;
+  --gold-soft: rgba(255, 122, 0, 0.12);
+  --gold-strong: #ff8a1a;
+
+  --ink: #ffffff;
+  --muted: #a7afbd;
+
+  --hair: rgba(255, 255, 255, 0.10);
+  --hair-strong: rgba(255, 255, 255, 0.20);
+
+  --win: #ff7a00;
+  --win-bg: rgba(255, 122, 0, 0.16);
+
+  --bg: #030508;
+  --surface: #080d18;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+}
+h1, h2, h3, .disp {
+  font-family: 'Oswald', Impact, 'Arial Narrow', sans-serif;
+  letter-spacing: .01em;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px 64px;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: #050605;
+  border-bottom: 1px solid var(--hair);
+  padding: 24px 16px 20px;
+}
+.hero-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.logo-wrap {
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(255, 122, 0, 0.08);
+  border: 1px solid rgba(255, 122, 0, 0.35);
+  font-size: 38px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-copy {
+  min-width: 0;
+  flex: 1;
+}
+.kicker {
+  font-size: 13px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+.hero h1 {
+  font-size: clamp(26px, 4vw, 38px);
+  margin: 0 0 4px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+}
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 600px;
+}
+.hero-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.tourney-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--hair-strong);
+  color: var(--muted);
+}
+.tourney-status-badge.is-live {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+}
+.tourney-status-badge.is-live .pulse-dot {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+}
+.meta-dot { color: var(--hair-strong); }
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4fae7d;
+  box-shadow: 0 0 6px #4fae7d;
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.badge-status {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.2;
+}
+.badge-live {
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  color: #fca5a5;
+}
+.badge-completed {
+  background: rgba(79, 174, 125, 0.15);
+  border: 1px solid rgba(79, 174, 125, 0.35);
+  color: #79dca6;
+}
+.badge-upcoming {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 16px 16px 0;
+  max-width: 1180px;
+  margin: 0 auto;
+  scrollbar-width: thin;
+}
+.tab {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--hair-strong);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Source Sans 3', sans-serif;
+  transition: all .15s ease;
+}
+.tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.tab.active {
+  background: var(--court-mid);
+  border-color: #3b50ba;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(22, 32, 88, 0.5);
+}
+.cat {
+  display: none;
+  animation: fadein .25s ease;
+}
+.cat.active { display: block; }
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cat-head {
+  padding: 22px 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid var(--hair);
+}
+.cat-head h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+  color: #fff;
+}
+.cat-sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 2px 0 0;
+}
+.chip {
+  font-size: 12.5px;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid rgba(242, 194, 48, 0.3);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.round-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 18px 2px 10px;
+  scroll-snap-type: x proximity;
+}
+.round-col {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+}
+.round-title {
+  background: var(--gold-strong);
+  color: #1a1503;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+  font-family: 'Oswald', sans-serif;
+}
+.round-body {
+  border: 1px solid var(--hair);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--surface);
+  min-height: 8px;
+}
+.match {
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+}
+.m-id {
+  font-size: 11px;
+  color: var(--muted);
+  padding: 6px 10px 4px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  display: flex;
+  justify-content: space-between;
+}
+.side {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-top: 1px solid var(--hair);
+  gap: 8px;
+}
+.side.win { background: var(--win-bg); }
+.side .nm {
+  font-size: 13.5px;
+  line-height: 1.3;
+  color: #fff;
+}
+.side.win .nm {
+  color: #79dca6;
+  font-weight: 700;
+}
+.side.placeholder .nm {
+  color: var(--muted);
+  font-style: italic;
+}
+.score-tag {
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f6f3ea;
+  margin-left: auto;
+}
+.side.win .score-tag {
+  background: var(--win);
+  color: #ffffff;
+}
+.tick {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--hair-strong);
+  flex: 0 0 16px;
+}
+.side.win .tick {
+  background: var(--win);
+  border-color: var(--win);
+  position: relative;
+}
+.side.win .tick:after {
+  content: "";
+  position: absolute;
+  left: 4.5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.board-breakdown {
+  padding: 6px 10px;
+  border-top: 1px dashed var(--hair);
+  background: rgba(0, 0, 0, 0.25);
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.board-scores {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.03em;
+  color: var(--gold);
+}
+
+.champ-strip {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px dashed var(--hair-strong);
+  border-radius: 10px;
+  background: rgba(242, 194, 48, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 14px;
+}
+.champ-strip b { color: var(--gold); }
+footer {
+  max-width: 1180px;
+  margin: 30px auto 0;
+  padding: 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-brand">
+      <div class="logo-wrap">
+        <span>🎯</span>
+      </div>
+      <div class="hero-copy">
+        <p class="kicker">Kalpathy Sports Fest · 2026</p>
+        <h1>Carroms Tournament Fixtures</h1>
+        <p>Official Tournament Draws &amp; Scores</p>
+        <div class="hero-meta-row">
+          <span class="tourney-status-badge" id="global-status-badge">Upcoming · 2026</span>
+          <span class="meta-dot">·</span>
+          <span>7 Categories</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div class="wrap" id="catHost"></div>
+
+<footer>
+  <p>Kalpathy Sports Fest 2026 · Carroms Tournament Fixtures</p>
+</footer>
+
+<script>
+(function() {
+  "use strict";
+
+  var CATEGORY_FILES = [
+    { id: "womens-singles", file: "womens-singles.json", name: "Women's Singles" },
+    { id: "mens-singles-18-45", file: "mens-singles-18-45.json", name: "Men's Singles (18–45)" },
+    { id: "mens-singles-above-45", file: "mens-singles-above-45.json", name: "Men's 45+ Singles" },
+    { id: "womens-doubles", file: "womens-doubles.json", name: "Women's Doubles" },
+    { id: "girls-singles", file: "girls-singles.json", name: "Girls Singles" },
+    { id: "boys-singles", file: "boys-singles.json", name: "Boys Singles" },
+    { id: "mens-doubles", file: "mens-doubles.json", name: "Men's Doubles" }
+  ];
+
+  var catDataMap = {};
+  var activeCatId = "womens-singles";
+
+  function esc(s) {
+    return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function getMatchOutcome(m) {
+    var winnerSide = null;
+    var totalPtsA = 0, totalPtsB = 0;
+    var boardsWonA = 0, boardsWonB = 0;
+    var boardDetailsStr = "";
+    var hasScores = false;
+
+    if (Array.isArray(m.boards) && m.boards.length > 0) {
+      hasScores = true;
+      var bParts = [];
+      m.boards.forEach(function(b, idx) {
+        if (Array.isArray(b) && b.length >= 2) {
+          var pA = parseInt(b[0], 10) || 0;
+          var pB = parseInt(b[1], 10) || 0;
+          totalPtsA += pA;
+          totalPtsB += pB;
+          if (pA > pB) boardsWonA++;
+          else if (pB > pA) boardsWonB++;
+          bParts.push("B" + (idx + 1) + ": " + pA + "-" + pB);
+        }
+      });
+      boardDetailsStr = bParts.join(" | ");
+
+      if (boardsWonA > boardsWonB) winnerSide = "A";
+      else if (boardsWonB > boardsWonA) winnerSide = "B";
+      else if (totalPtsA > totalPtsB) winnerSide = "A";
+      else if (totalPtsB > totalPtsA) winnerSide = "B";
+    } else if (m.scoreA !== undefined && m.scoreB !== undefined && m.scoreA !== null && m.scoreB !== null) {
+      hasScores = true;
+      totalPtsA = parseInt(m.scoreA, 10) || 0;
+      totalPtsB = parseInt(m.scoreB, 10) || 0;
+      if (totalPtsA > totalPtsB) winnerSide = "A";
+      else if (totalPtsB > totalPtsA) winnerSide = "B";
+    }
+
+    if (m.winner) {
+      winnerSide = String(m.winner).toUpperCase();
+    }
+
+    return {
+      hasScores: hasScores,
+      totalPtsA: totalPtsA,
+      totalPtsB: totalPtsB,
+      boardDetailsStr: boardDetailsStr,
+      winnerSide: winnerSide
+    };
+  }
+
+  function resolveParticipant(sideVal, ctx) {
+    if (!sideVal) return { name: "TBD", isResolved: false, isPending: true };
+
+    var str = String(sideVal).trim();
+
+    if (str.indexOf(":loser") !== -1) {
+      var matchIdL = str.replace(":loser", "");
+      if (ctx.losers[matchIdL]) {
+        return { name: ctx.losers[matchIdL], isResolved: true, isPending: false };
+      }
+      return { name: "Loser " + matchIdL, isResolved: false, isPending: true };
+    }
+
+    if (ctx.allMatchIds[str]) {
+      if (ctx.winners[str]) {
+        return { name: ctx.winners[str], isResolved: true, isPending: false };
+      }
+      return { name: "Winner " + str, isResolved: false, isPending: true };
+    }
+
+    return { name: str, isResolved: true, isPending: false };
+  }
+
+  function computeTournamentContext(cat) {
+    var ctx = { winners: {}, losers: {}, allMatchIds: {} };
+
+    if (cat.rounds) {
+      cat.rounds.forEach(function(round) {
+        round.matches.forEach(function(m) { ctx.allMatchIds[m.id] = true; });
+      });
+
+      cat.rounds.forEach(function(round) {
+        round.matches.forEach(function(m) {
+          var a = resolveParticipant(m.a, ctx);
+          var b = resolveParticipant(m.b, ctx);
+          var outcome = getMatchOutcome(m);
+
+          if (outcome.winnerSide === "A" && a.isResolved) {
+            ctx.winners[m.id] = a.name;
+            ctx.losers[m.id] = b.name;
+          } else if (outcome.winnerSide === "B" && b.isResolved) {
+            ctx.winners[m.id] = b.name;
+            ctx.losers[m.id] = a.name;
+          }
+        });
+      });
+    }
+
+    return ctx;
+  }
+
+  function getMatchStatus(m, outcome) {
+    if (m.status) {
+      var s = String(m.status).toLowerCase();
+      if (s === "live" || s === "in-progress") return "live";
+      if (s === "completed") return "completed";
+      if (s === "upcoming") return "upcoming";
+    }
+    if (outcome.winnerSide) return "completed";
+    return "upcoming";
+  }
+
+  function renderStatusBadge(status) {
+    if (status === "live") return '<span class="badge-status badge-live"><span class="pulse-dot"></span>Live</span>';
+    if (status === "completed") return '<span class="badge-status badge-completed">Completed</span>';
+    return '<span class="badge-status badge-upcoming">Upcoming</span>';
+  }
+
+  function renderMatchCard(m, ctx) {
+    var a = resolveParticipant(m.a, ctx);
+    var b = resolveParticipant(m.b, ctx);
+    var outcome = getMatchOutcome(m);
+    var status = getMatchStatus(m, outcome);
+
+    var isWinA = outcome.winnerSide === "A";
+    var isWinB = outcome.winnerSide === "B";
+
+    var html = '<div class="match match-' + status + '" id="match-' + esc(m.id) + '">';
+    html += '<div class="m-id"><span>Match ' + esc(m.id) + '</span>' + renderStatusBadge(status) + '</div>';
+
+    // Side A
+    var classA = "side" + (isWinA ? " win" : "") + (a.isPending ? " placeholder" : "");
+    html += '<div class="' + classA + '">';
+    html += '<span class="nm">' + esc(a.name) + '</span>';
+    if (outcome.hasScores) {
+      html += '<span class="score-tag">' + outcome.totalPtsA + '</span>';
+    }
+    html += '<span class="tick"></span>';
+    html += '</div>';
+
+    // Side B
+    var classB = "side" + (isWinB ? " win" : "") + (b.isPending ? " placeholder" : "");
+    html += '<div class="' + classB + '">';
+    html += '<span class="nm">' + esc(b.name) + '</span>';
+    if (outcome.hasScores) {
+      html += '<span class="score-tag">' + outcome.totalPtsB + '</span>';
+    }
+    html += '<span class="tick"></span>';
+    html += '</div>';
+
+    if (outcome.boardDetailsStr) {
+      html += '<div class="board-breakdown"><span>Boards:</span><span class="board-scores">' + esc(outcome.boardDetailsStr) + '</span></div>';
+    }
+
+    html += '</div>';
+    return html;
+  }
+
+  function renderChampionLine(cat, ctx) {
+    if (!cat.rounds || cat.rounds.length === 0) return "";
+    var lastRound = cat.rounds[cat.rounds.length - 1];
+    var finalMatch = lastRound.matches.filter(function(m) { return /FINAL/i.test(m.id); })[0];
+
+    if (finalMatch) {
+      var w = ctx.winners[finalMatch.id];
+      var l = ctx.losers[finalMatch.id];
+      if (w || l) {
+        return '<div class="champ-strip"><span><b>Champion:</b> ' + esc(w || "TBD") + '</span><span><b>Runner-up:</b> ' + esc(l || "TBD") + '</span></div>';
+      }
+    }
+    return "";
+  }
+
+  function renderCategoryView(cat) {
+    var host = document.getElementById("cat-" + cat.id);
+    if (!host) return;
+
+    var ctx = computeTournamentContext(cat);
+    var body = host.querySelector(".cat-body");
+
+    var html = '<div class="round-scroll">';
+    if (cat.rounds) {
+      cat.rounds.forEach(function(round) {
+        html += '<div class="round-col"><div class="round-title">' + esc(round.name) + '</div><div class="round-body">';
+        round.matches.forEach(function(m) { html += renderMatchCard(m, ctx); });
+        html += '</div></div>';
+      });
+    }
+    html += '</div>';
+
+    body.innerHTML = html;
+
+    var champHost = host.querySelector(".champ-host");
+    if (champHost) {
+      champHost.innerHTML = renderChampionLine(cat, ctx);
+    }
+  }
+
+  function fetchCategoryFile(filename) {
+    var ts = "?_t=" + Date.now();
+    var pathname = window.location.pathname || "/";
+    var baseDir = pathname.substring(0, pathname.lastIndexOf("/") + 1);
+    if (!baseDir.endsWith("/")) baseDir += "/";
+
+    var pathsToTry = [
+      "./data/" + filename + ts,
+      baseDir + "data/" + filename + ts,
+      "data/" + filename + ts,
+      "./" + filename + ts
+    ];
+
+    function tryPath(idx) {
+      if (idx >= pathsToTry.length) return Promise.reject(new Error("Failed to load " + filename));
+      return fetch(pathsToTry[idx], { cache: "no-store" })
+        .then(function(res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .catch(function() { return tryPath(idx + 1); });
+    }
+
+    return tryPath(0);
+  }
+
+  function fetchAllCategories() {
+    var promises = CATEGORY_FILES.map(function(item) {
+      return fetchCategoryFile(item.file)
+        .then(function(json) { catDataMap[item.id] = json; })
+        .catch(function(err) { console.warn("Could not load " + item.file, err); });
+    });
+
+    return Promise.all(promises).then(function() {
+      CATEGORY_FILES.forEach(function(item) {
+        var cat = catDataMap[item.id];
+        if (cat) {
+          var titleEl = document.getElementById("title-" + item.id);
+          var subEl = document.getElementById("sub-" + item.id);
+          var chipEl = document.getElementById("chip-" + item.id);
+
+          if (titleEl) titleEl.textContent = cat.name;
+          if (subEl) subEl.textContent = cat.subtitle || "";
+          if (chipEl) chipEl.textContent = cat.chip || "Knockout";
+
+          renderCategoryView(cat);
+        }
+      });
+    });
+  }
+
+  function showTab(id) {
+    activeCatId = id;
+    CATEGORY_FILES.forEach(function(item) {
+      var catEl = document.getElementById("cat-" + item.id);
+      var tabEl = document.getElementById("tabbtn-" + item.id);
+      if (catEl) catEl.classList.toggle("active", item.id === id);
+      if (tabEl) tabEl.classList.toggle("active", item.id === id);
+    });
+  }
+
+  function initDOM() {
+    var tabsHost = document.getElementById("tabs");
+    var catHost = document.getElementById("catHost");
+
+    tabsHost.innerHTML = "";
+    catHost.innerHTML = "";
+
+    CATEGORY_FILES.forEach(function(item) {
+      var tab = document.createElement("button");
+      tab.className = "tab" + (item.id === activeCatId ? " active" : "");
+      tab.textContent = item.name;
+      tab.id = "tabbtn-" + item.id;
+      tab.onclick = function() { showTab(item.id); };
+      tabsHost.appendChild(tab);
+
+      var section = document.createElement("div");
+      section.className = "cat" + (item.id === activeCatId ? " active" : "");
+      section.id = "cat-" + item.id;
+      section.innerHTML =
+        '<div class="cat-head">' +
+          '<div><h2 id="title-' + esc(item.id) + '">' + esc(item.name) + '</h2>' +
+          '<p class="cat-sub" id="sub-' + esc(item.id) + '">Loading...</p></div>' +
+          '<div><span class="chip" id="chip-' + esc(item.id) + '">Knockout</span></div>' +
+        '</div>' +
+        '<div class="cat-body" style="padding-top:14px;">Loading fixtures...</div>' +
+        '<div class="champ-host"></div>';
+      catHost.appendChild(section);
+    });
+
+    fetchAllCategories();
+    setInterval(fetchAllCategories, 15000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDOM);
+  } else {
+    initDOM();
+  }
+})();
+</script>
+</body>
+</html>
