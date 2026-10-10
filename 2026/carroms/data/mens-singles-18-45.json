@@ -1,0 +1,74 @@
+{
+  "id": "mens-singles-18-45",
+  "name": "Men's Singles (18–45)",
+  "subtitle": "18+ Singles Carroms Knockout Fixtures",
+  "chip": "Knockout",
+  "type": "knockout",
+  "rounds": [
+    {
+      "name": "Preliminary Round 1",
+      "matches": [
+        { "id": "P1", "a": "Mahadevan", "b": "Aswath G" },
+        { "id": "P2", "a": "Aditya Sooryanarayanan", "b": "VENKATESH P H" },
+        { "id": "P3", "a": "Eashwer", "b": "Venkatesh R" },
+        { "id": "P4", "a": "Ajaykrishnan s", "b": "Arun K K" }
+      ]
+    },
+    {
+      "name": "Round of 32",
+      "matches": [
+        { "id": "M1", "a": "C.T", "b": "V A SURYANARAYANAN" },
+        { "id": "M2", "a": "Suraj", "b": "R V SIVARAMAKRISHNAN" },
+        { "id": "M3", "a": "Dhanush G", "b": "Sreeraj K.R" },
+        { "id": "M4", "a": "K B Mahesh Kumar", "b": "S V Ramachandran" },
+        { "id": "M5", "a": "P K SANGAMESWAR", "b": "Mahesh" },
+        { "id": "M6", "a": "Navaneeth", "b": "R V ESWARAN" },
+        { "id": "M7", "a": "Vishal", "b": "Hariharan. N. P" },
+        { "id": "M8", "a": "Yogesh TS", "b": "Hariharan M" },
+        { "id": "M9", "a": "Balu", "b": "VIVEK" },
+        { "id": "M10", "a": "Balachandar M", "b": "Mahadevan(Mahesh)" },
+        { "id": "M11", "a": "Sivasubramanian N P", "b": "Venkiteswaran K" },
+        { "id": "M12", "a": "Ram K V", "b": "Ramaswamy Mathur" },
+        { "id": "M13", "a": "Gokul Iyer", "b": "Arun" },
+        { "id": "M14", "a": "Anand S", "b": "Manikandan M" },
+        { "id": "M15", "a": "P1", "b": "P2" },
+        { "id": "M16", "a": "P3", "b": "P4" }
+      ]
+    },
+    {
+      "name": "Round of 16",
+      "matches": [
+        { "id": "M17", "a": "M1", "b": "M2" },
+        { "id": "M18", "a": "M3", "b": "M4" },
+        { "id": "M19", "a": "M5", "b": "M6" },
+        { "id": "M20", "a": "M7", "b": "M8" },
+        { "id": "M21", "a": "M9", "b": "M10" },
+        { "id": "M22", "a": "M11", "b": "M12" },
+        { "id": "M23", "a": "M13", "b": "M14" },
+        { "id": "M24", "a": "M15", "b": "M16" }
+      ]
+    },
+    {
+      "name": "Quarter-Finals",
+      "matches": [
+        { "id": "QF1", "a": "M17", "b": "M18" },
+        { "id": "QF2", "a": "M19", "b": "M20" },
+        { "id": "QF3", "a": "M21", "b": "M22" },
+        { "id": "QF4", "a": "M23", "b": "M24" }
+      ]
+    },
+    {
+      "name": "Semi-Finals",
+      "matches": [
+        { "id": "SF1", "a": "QF1", "b": "QF2" },
+        { "id": "SF2", "a": "QF3", "b": "QF4" }
+      ]
+    },
+    {
+      "name": "Final",
+      "matches": [
+        { "id": "FINAL", "a": "SF1", "b": "SF2" }
+      ]
+    }
+  ]
+}
