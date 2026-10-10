@@ -1,0 +1,22 @@
+{
+  "id": "womens-doubles",
+  "name": "Women's Doubles",
+  "subtitle": "Women Senior Doubles Carroms",
+  "chip": "Knockout",
+  "type": "knockout",
+  "rounds": [
+    {
+      "name": "Semi-Finals",
+      "matches": [
+        { "id": "SF1", "a": "SRI DHANYA / SAKTHI", "b": "SHANTHI / ANEESHA" },
+        { "id": "SF2", "a": "BHAVYA / SHYAMA", "b": "SEETHA / KAVITHA" }
+      ]
+    },
+    {
+      "name": "Final",
+      "matches": [
+        { "id": "FINAL", "a": "SF1", "b": "SF2" }
+      ]
+    }
+  ]
+}
