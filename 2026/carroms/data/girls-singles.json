@@ -1,0 +1,15 @@
+{
+  "id": "girls-singles",
+  "name": "Girls Singles",
+  "subtitle": "Girls Singles Carroms",
+  "chip": "Knockout",
+  "type": "knockout",
+  "rounds": [
+    {
+      "name": "Final",
+      "matches": [
+        { "id": "FINAL", "a": "LAKSHANA", "b": "ANANYA" }
+      ]
+    }
+  ]
+}
