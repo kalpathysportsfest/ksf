@@ -1,0 +1,57 @@
+{
+  "id": "boys-singles",
+  "name": "Boys Singles",
+  "subtitle": "Under-18 Singles Carroms Knockout Fixtures",
+  "chip": "Knockout",
+  "type": "knockout",
+  "rounds": [
+    {
+      "name": "Round 1",
+      "matches": [
+        { "id": "M1", "a": "Thanmay", "b": "HARIDATH P" },
+        { "id": "M2", "a": "Vishnudev", "b": "Rithul. K" },
+        { "id": "M3", "a": "Sanohu", "b": "L.Adwaidmuthukrishnan" },
+        { "id": "M4", "a": "Viresh Balasubramanian R", "b": "Aayush Vijayan" },
+        { "id": "M5", "a": "Sreeram", "b": "Badrinath PB" },
+        { "id": "M6", "a": "Karthik", "b": "Akhilesh" },
+        { "id": "M7", "a": "Abhishek", "b": "RISHIKESH" },
+        { "id": "M8", "a": "Kallao", "b": "T. S. Sreehari" }
+      ]
+    },
+    {
+      "name": "Round of 16",
+      "matches": [
+        { "id": "M9", "a": "P S Srinivasan", "b": "M1" },
+        { "id": "M10", "a": "G S Harinarayan", "b": "M2" },
+        { "id": "M11", "a": "Sreehari S", "b": "M3" },
+        { "id": "M12", "a": "Vaibhav", "b": "M4" },
+        { "id": "M13", "a": "Adwaid seshadri", "b": "M5" },
+        { "id": "M14", "a": "Arjith A", "b": "M6" },
+        { "id": "M15", "a": "Ramjith A", "b": "M7" },
+        { "id": "M16", "a": "Ramcharan", "b": "M8" }
+      ]
+    },
+    {
+      "name": "Quarter-Finals",
+      "matches": [
+        { "id": "QF1", "a": "M9", "b": "M10" },
+        { "id": "QF2", "a": "M11", "b": "M12" },
+        { "id": "QF3", "a": "M13", "b": "M14" },
+        { "id": "QF4", "a": "M15", "b": "M16" }
+      ]
+    },
+    {
+      "name": "Semi-Finals",
+      "matches": [
+        { "id": "SF1", "a": "QF1", "b": "QF2" },
+        { "id": "SF2", "a": "QF3", "b": "QF4" }
+      ]
+    },
+    {
+      "name": "Final",
+      "matches": [
+        { "id": "FINAL", "a": "SF1", "b": "SF2" }
+      ]
+    }
+  ]
+}
