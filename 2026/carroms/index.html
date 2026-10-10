@@ -487,8 +487,8 @@ footer {
 
     return {
       hasScores: hasScores,
-      totalPtsA: totalPtsA,
-      totalPtsB: totalPtsB,
+      boardsWonA: boardsWonA,
+      boardsWonB: boardsWonB,
       boardDetailsStr: boardDetailsStr,
       winnerSide: winnerSide
     };
@@ -574,26 +574,27 @@ footer {
     var html = '<div class="match match-' + status + '" id="match-' + esc(m.id) + '">';
     html += '<div class="m-id"><span>Match ' + esc(m.id) + '</span>' + renderStatusBadge(status) + '</div>';
 
-    // Side A
+    // Side A (Displays boards won)
     var classA = "side" + (isWinA ? " win" : "") + (a.isPending ? " placeholder" : "");
     html += '<div class="' + classA + '">';
     html += '<span class="nm">' + esc(a.name) + '</span>';
     if (outcome.hasScores) {
-      html += '<span class="score-tag">' + outcome.totalPtsA + '</span>';
+      html += '<span class="score-tag">' + outcome.boardsWonA + '</span>';
     }
     html += '<span class="tick"></span>';
     html += '</div>';
 
-    // Side B
+    // Side B (Displays boards won)
     var classB = "side" + (isWinB ? " win" : "") + (b.isPending ? " placeholder" : "");
     html += '<div class="' + classB + '">';
     html += '<span class="nm">' + esc(b.name) + '</span>';
     if (outcome.hasScores) {
-      html += '<span class="score-tag">' + outcome.totalPtsB + '</span>';
+      html += '<span class="score-tag">' + outcome.boardsWonB + '</span>';
     }
     html += '<span class="tick"></span>';
     html += '</div>';
 
+    // Board Breakdown Footer (Shows point breakdown per board like B1: 25-10 | B2: 15-25)
     if (outcome.boardDetailsStr) {
       html += '<div class="board-breakdown"><span>Boards:</span><span class="board-scores">' + esc(outcome.boardDetailsStr) + '</span></div>';
     }
