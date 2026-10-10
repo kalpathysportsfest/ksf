@@ -12,10 +12,10 @@
         { "id": "R1-M2", "a": "UDITH / CT", "b": "ASWATH G / YOGESH", "boards": [] },
         { "id": "R1-M3", "a": "GOKUL / MANIKANDAN M", "b": "MANOJ / KIRAN", "boards": [] },
         { "id": "R1-M4", "a": "CS MAHESH / GOPALAKRISHNAN", "b": "ARUN / VISHAL", "boards": [] },
-        { "id": "R1-M5", "a": "HARIHARAN NP / VENKATESH R", "b": "HARIHARAN M / BALACHANDAR M", "boards": [] },
+        { "id": "R1-M5", "a": "SIVASUBRAMANIAN NP / BALU MAHI", "b": "HARIHARAN M / BALACHANDAR M", "boards": [] },
         { "id": "R1-M6", "a": "HARIHARAN / RAJAMANI", "b": "GANESH KRISHNA / KALYANARAMAN", "boards": [] },
         { "id": "R1-M7", "a": "MAHESH / MANIKUTTY", "b": "MOORTHY / SANGAMESWARAN", "boards": [] },
-        { "id": "R1-M8", "a": "SUBRAMANIAN / HARIKRISHNAN S", "b": "SIVASUBRAMANIAN NP / NIVEDH", "boards": [] }
+        { "id": "R1-M8", "a": "SUBRAMANIAN / HARIKRISHNAN S", "b": "VENKATESH R / NIVEDH", "boards": [] }
       ]
     },
     {
