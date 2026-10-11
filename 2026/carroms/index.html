@@ -250,24 +250,25 @@ h1, h2, h3, .disp {
   font-weight: 600;
 }
 
-/* Vertical layout: stacked round columns with responsive grid for match cards */
-.round-vertical-container {
+.round-scroll {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: 18px;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 18px 2px 10px;
+  scroll-snap-type: x proximity;
 }
 .round-col {
-  width: 100%;
+  flex: 0 0 280px;
+  scroll-snap-align: start;
 }
 .round-title {
   background: var(--gold-strong);
   color: #1a1503;
-  font-size: 13px;
+  font-size: 12.5px;
   text-transform: uppercase;
   letter-spacing: .09em;
   font-weight: 700;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: 8px 8px 0 0;
   font-family: 'Oswald', sans-serif;
 }
@@ -275,13 +276,13 @@ h1, h2, h3, .disp {
   border: 1px solid var(--hair);
   border-top: none;
   border-radius: 0 0 8px 8px;
-  padding: 14px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background: var(--surface);
+  min-height: 8px;
 }
-
 .match {
   border: 1px solid var(--hair);
   border-radius: 8px;
@@ -546,4 +547,202 @@ footer {
 
   function getMatchStatus(m, outcome) {
     if (m.status) {
-      var s = String(m.status).toLowerCase
+      var s = String(m.status).toLowerCase();
+      if (s === "live" || s === "in-progress") return "live";
+      if (s === "completed") return "completed";
+      if (s === "upcoming") return "upcoming";
+    }
+    if (outcome.winnerSide) return "completed";
+    return "upcoming";
+  }
+
+  function renderStatusBadge(status) {
+    if (status === "live") return '<span class="badge-status badge-live"><span class="pulse-dot"></span>Live</span>';
+    if (status === "completed") return '<span class="badge-status badge-completed">Completed</span>';
+    return '<span class="badge-status badge-upcoming">Upcoming</span>';
+  }
+
+  function renderMatchCard(m, ctx) {
+    var a = resolveParticipant(m.a, ctx);
+    var b = resolveParticipant(m.b, ctx);
+    var outcome = getMatchOutcome(m);
+    var status = getMatchStatus(m, outcome);
+
+    var isWinA = outcome.winnerSide === "A";
+    var isWinB = outcome.winnerSide === "B";
+
+    var html = '<div class="match match-' + status + '" id="match-' + esc(m.id) + '">';
+    html += '<div class="m-id"><span>Match ' + esc(m.id) + '</span>' + renderStatusBadge(status) + '</div>';
+
+    // Side A (Displays boards won)
+    var classA = "side" + (isWinA ? " win" : "") + (a.isPending ? " placeholder" : "");
+    html += '<div class="' + classA + '">';
+    html += '<span class="nm">' + esc(a.name) + '</span>';
+    if (outcome.hasScores) {
+      html += '<span class="score-tag">' + outcome.boardsWonA + '</span>';
+    }
+    html += '<span class="tick"></span>';
+    html += '</div>';
+
+    // Side B (Displays boards won)
+    var classB = "side" + (isWinB ? " win" : "") + (b.isPending ? " placeholder" : "");
+    html += '<div class="' + classB + '">';
+    html += '<span class="nm">' + esc(b.name) + '</span>';
+    if (outcome.hasScores) {
+      html += '<span class="score-tag">' + outcome.boardsWonB + '</span>';
+    }
+    html += '<span class="tick"></span>';
+    html += '</div>';
+
+    // Board Breakdown Footer (Shows point breakdown per board like B1: 25-10 | B2: 15-25)
+    if (outcome.boardDetailsStr) {
+      html += '<div class="board-breakdown"><span>Boards:</span><span class="board-scores">' + esc(outcome.boardDetailsStr) + '</span></div>';
+    }
+
+    html += '</div>';
+    return html;
+  }
+
+  function renderChampionLine(cat, ctx) {
+    if (!cat.rounds || cat.rounds.length === 0) return "";
+    var lastRound = cat.rounds[cat.rounds.length - 1];
+    var finalMatch = lastRound.matches.filter(function(m) { return /FINAL/i.test(m.id); })[0];
+
+    if (finalMatch) {
+      var w = ctx.winners[finalMatch.id];
+      var l = ctx.losers[finalMatch.id];
+      if (w || l) {
+        return '<div class="champ-strip"><span><b>Champion:</b> ' + esc(w || "TBD") + '</span><span><b>Runner-up:</b> ' + esc(l || "TBD") + '</span></div>';
+      }
+    }
+    return "";
+  }
+
+  function renderCategoryView(cat) {
+    var host = document.getElementById("cat-" + cat.id);
+    if (!host) return;
+
+    var ctx = computeTournamentContext(cat);
+    var body = host.querySelector(".cat-body");
+
+    var html = '<div class="round-scroll">';
+    if (cat.rounds) {
+      cat.rounds.forEach(function(round) {
+        html += '<div class="round-col"><div class="round-title">' + esc(round.name) + '</div><div class="round-body">';
+        round.matches.forEach(function(m) { html += renderMatchCard(m, ctx); });
+        html += '</div></div>';
+      });
+    }
+    html += '</div>';
+
+    body.innerHTML = html;
+
+    var champHost = host.querySelector(".champ-host");
+    if (champHost) {
+      champHost.innerHTML = renderChampionLine(cat, ctx);
+    }
+  }
+
+  function fetchCategoryFile(filename) {
+    var ts = "?_t=" + Date.now();
+    var pathname = window.location.pathname || "/";
+    var baseDir = pathname.substring(0, pathname.lastIndexOf("/") + 1);
+    if (!baseDir.endsWith("/")) baseDir += "/";
+
+    var pathsToTry = [
+      "./data/" + filename + ts,
+      baseDir + "data/" + filename + ts,
+      "data/" + filename + ts,
+      "./" + filename + ts
+    ];
+
+    function tryPath(idx) {
+      if (idx >= pathsToTry.length) return Promise.reject(new Error("Failed to load " + filename));
+      return fetch(pathsToTry[idx], { cache: "no-store" })
+        .then(function(res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .catch(function() { return tryPath(idx + 1); });
+    }
+
+    return tryPath(0);
+  }
+
+  function fetchAllCategories() {
+    var promises = CATEGORY_FILES.map(function(item) {
+      return fetchCategoryFile(item.file)
+        .then(function(json) { catDataMap[item.id] = json; })
+        .catch(function(err) { console.warn("Could not load " + item.file, err); });
+    });
+
+    return Promise.all(promises).then(function() {
+      CATEGORY_FILES.forEach(function(item) {
+        var cat = catDataMap[item.id];
+        if (cat) {
+          var titleEl = document.getElementById("title-" + item.id);
+          var subEl = document.getElementById("sub-" + item.id);
+          var chipEl = document.getElementById("chip-" + item.id);
+
+          if (titleEl) titleEl.textContent = cat.name;
+          if (subEl) subEl.textContent = cat.subtitle || "";
+          if (chipEl) chipEl.textContent = cat.chip || "Knockout";
+
+          renderCategoryView(cat);
+        }
+      });
+    });
+  }
+
+  function showTab(id) {
+    activeCatId = id;
+    CATEGORY_FILES.forEach(function(item) {
+      var catEl = document.getElementById("cat-" + item.id);
+      var tabEl = document.getElementById("tabbtn-" + item.id);
+      if (catEl) catEl.classList.toggle("active", item.id === id);
+      if (tabEl) tabEl.classList.toggle("active", item.id === id);
+    });
+  }
+
+  function initDOM() {
+    var tabsHost = document.getElementById("tabs");
+    var catHost = document.getElementById("catHost");
+
+    tabsHost.innerHTML = "";
+    catHost.innerHTML = "";
+
+    CATEGORY_FILES.forEach(function(item) {
+      var tab = document.createElement("button");
+      tab.className = "tab" + (item.id === activeCatId ? " active" : "");
+      tab.textContent = item.name;
+      tab.id = "tabbtn-" + item.id;
+      tab.onclick = function() { showTab(item.id); };
+      tabsHost.appendChild(tab);
+
+      var section = document.createElement("div");
+      section.className = "cat" + (item.id === activeCatId ? " active" : "");
+      section.id = "cat-" + item.id;
+      section.innerHTML =
+        '<div class="cat-head">' +
+          '<div><h2 id="title-' + esc(item.id) + '">' + esc(item.name) + '</h2>' +
+          '<p class="cat-sub" id="sub-' + esc(item.id) + '">Loading...</p></div>' +
+          '<div><span class="chip" id="chip-' + esc(item.id) + '">Knockout</span></div>' +
+        '</div>' +
+        '<div class="cat-body" style="padding-top:14px;">Loading fixtures...</div>' +
+        '<div class="champ-host"></div>';
+      catHost.appendChild(section);
+    });
+
+    fetchAllCategories();
+    setInterval(fetchAllCategories, 15000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDOM);
+  } else {
+    initDOM();
+  }
+})();
+</script>
+</body>
+</html>
