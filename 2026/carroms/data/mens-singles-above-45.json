@@ -8,49 +8,49 @@
     {
       "name": "Round 1",
       "matches": [
-        { "id": "R1-M1", "a": "SREERAM PN", "b": "VENKITARAMAN KV", "boards": [] },
-        { "id": "R1-M2", "a": "KANNAN", "b": "RAMAKISHNAN NN", "boards": [] },
-        { "id": "R1-M3", "a": "M VENKITACHALAM", "b": "SREEENIVASAN S", "boards": [] },
-        { "id": "R1-M4", "a": "KARTHIK", "b": "GOPALAKRISHNAN(KANNI)", "boards": [] },
-        { "id": "R1-M5", "a": "SREENIVASAN PV(SRIKANTH)", "b": "SREEKRISHNAN CV", "boards": [] },
-        { "id": "R1-M6", "a": "MOORTHY", "b": "GANAPATHI TV", "boards": [] },
-        { "id": "R1-M7", "a": "PK RAMAN", "b": "KRISHNAMOORTHY", "boards": [] },
-        { "id": "R1-M8", "a": "KS VENKATARAMAN", "b": "SREENIVASAN KV", "boards": [] }
+        { "id": "R1-M1", "a": "SREERAM PN", "b": "VENKITARAMAN KV", "boards": [[0,1]] },
+        { "id": "R1-M2", "a": "KANNAN", "b": "RAMAKISHNAN NN", "boards": [[0,1]] },
+        { "id": "R1-M3", "a": "M VENKITACHALAM", "b": "SREEENIVASAN S", "boards": [[0,1]] },
+        { "id": "R1-M4", "a": "KARTHIK", "b": "GOPALAKRISHNAN(KANNI)", "boards": [[1,0]] },
+        { "id": "R1-M5", "a": "SREENIVASAN PV(SRIKANTH)", "b": "SREEKRISHNAN CV", "boards": [[1,0]] },
+        { "id": "R1-M6", "a": "MOORTHY", "b": "GANAPATHI TV", "boards": [[1,0]] },
+        { "id": "R1-M7", "a": "PK RAMAN", "b": "KRISHNAMOORTHY", "boards": [[1,0]] },
+        { "id": "R1-M8", "a": "KS VENKATARAMAN", "b": "SREENIVASAN KV", "boards": [[14,9]] }
       ]
     },
     {
       "name": "Round 2",
       "matches": [
-        { "id": "R2-M1", "a": "S NAGARAJAN", "b": "R1-M1", "boards": [] },
-        { "id": "R2-M2", "a": "RAJESH PN", "b": "R1-M2", "boards": [] },
-        { "id": "R2-M3", "a": "MS VENKITACHALAM", "b": "R1-M3", "boards": [] },
-        { "id": "R2-M4", "a": "RAJAN PV", "b": "R1-M4", "boards": [] },
-        { "id": "R2-M5", "a": "SUBRAMANIAN", "b": "R1-M5", "boards": [] },
-        { "id": "R2-M6", "a": "AYYAPPAN", "b": "R1-M6", "boards": [] },
-        { "id": "R2-M7", "a": "RAMANATHAN KV(KANNAN)", "b": "R1-M7", "boards": [] },
-        { "id": "R2-M8", "a": "SHIVARAMAKRISHNAN", "b": "R1-M8", "boards": [] }
+        { "id": "R2-M1", "a": "S NAGARAJAN", "b": "R1-M1", "boards": [[33,0]] },
+        { "id": "R2-M2", "a": "RAJESH PN", "b": "R1-M2", "boards": [[1,0]] },
+        { "id": "R2-M3", "a": "MS VENKITACHALAM", "b": "R1-M3", "boards": [[29,2]] },
+        { "id": "R2-M4", "a": "RAJAN PV", "b": "R1-M4", "boards": [[26,2]] },
+        { "id": "R2-M5", "a": "SUBRAMANIAN", "b": "R1-M5", "boards": [[1,0]] },
+        { "id": "R2-M6", "a": "AYYAPPAN", "b": "R1-M6", "boards": [[16,1]] },
+        { "id": "R2-M7", "a": "RAMANATHAN KV(KANNAN)", "b": "R1-M7", "boards": [[0,1]] },
+        { "id": "R2-M8", "a": "SHIVARAMAKRISHNAN", "b": "R1-M8", "boards": [[0,1]] }
       ]
     },
     {
       "name": "Quarter-Finals",
       "matches": [
-        { "id": "QF1", "a": "R2-M1", "b": "R2-M2", "boards": [] },
-        { "id": "QF2", "a": "R2-M3", "b": "R2-M4", "boards": [] },
-        { "id": "QF3", "a": "R2-M5", "b": "R2-M6", "boards": [] },
-        { "id": "QF4", "a": "R2-M7", "b": "R2-M8", "boards": [] }
+        { "id": "QF1", "a": "R2-M1", "b": "R2-M2", "boards": [[31,0]] },
+        { "id": "QF2", "a": "R2-M3", "b": "R2-M4", "boards": [[1,14]] },
+        { "id": "QF3", "a": "R2-M5", "b": "R2-M6", "boards": [[6,10]] },
+        { "id": "QF4", "a": "R2-M7", "b": "R2-M8", "boards": [[0,29]] }
       ]
     },
     {
       "name": "Semi-Finals",
       "matches": [
-        { "id": "SF1", "a": "QF1", "b": "QF2", "boards": [] },
-        { "id": "SF2", "a": "QF3", "b": "QF4", "boards": [] }
+        { "id": "SF1", "a": "QF1", "b": "QF2", "boards": [[0,22]] },
+        { "id": "SF2", "a": "QF3", "b": "QF4", "boards": [[0,13]] }
       ]
     },
     {
       "name": "Final",
       "matches": [
-        { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [] }
+        { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [[10,6]] }
       ]
     }
   ]
