@@ -8,23 +8,23 @@
     {
       "name": "Quarter-Finals",
       "matches": [
-        { "id": "QF1", "a": "JAYASHREE", "b": "SEETHA B", "boards": [] },
-        { "id": "QF2", "a": "GAYATHRI", "b": "SAKTHI", "boards": [] },
-        { "id": "QF3", "a": "SHANTHI", "b": "AKSHAYA K", "boards": [] },
+        { "id": "QF1", "a": "JAYASHREE", "b": "SEETHA B", "boards": [[16,0]] },
+        { "id": "QF2", "a": "GAYATHRI", "b": "SAKTHI", "boards": [[0,1]] },
+        { "id": "QF3", "a": "SHANTHI", "b": "AKSHAYA K", "boards": [[1,0]] },
         { "id": "QF4", "a": "KAVITHA", "b": "SHYAMA", "boards": [[0,11],[0,11]] }
       ]
     },
     {
       "name": "Semi-Finals",
       "matches": [
-        { "id": "SF1", "a": "QF1", "b": "QF2", "boards": [] },
-        { "id": "SF2", "a": "QF3", "b": "QF4", "boards": [] }
+        { "id": "SF1", "a": "QF1", "b": "QF2", "boards": [[4,7]] },
+        { "id": "SF2", "a": "QF3", "b": "QF4", "boards": [[11,0]] }
       ]
     },
     {
       "name": "Final",
       "matches": [
-        { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [] }
+        { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [[12,0]] }
       ]
     }
   ]
