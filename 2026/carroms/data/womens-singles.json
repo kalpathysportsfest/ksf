@@ -11,7 +11,7 @@
         { "id": "QF1", "a": "JAYASHREE", "b": "SEETHA B", "boards": [] },
         { "id": "QF2", "a": "GAYATHRI", "b": "SAKTHI", "boards": [] },
         { "id": "QF3", "a": "SHANTHI", "b": "AKSHAYA K", "boards": [] },
-        { "id": "QF4", "a": "KAVITHA", "b": "SHYAMA", "boards": [] }
+        { "id": "QF4", "a": "KAVITHA", "b": "SHYAMA", "boards": ([0,11],[0,11]) }
       ]
     },
     {
