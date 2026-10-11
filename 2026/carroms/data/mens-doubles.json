@@ -14,7 +14,7 @@
         { "id": "R1-M4", "a": "CS MAHESH / GOPALAKRISHNAN", "b": "ARUN / VISHAL", "boards": [[14,0]] },
         { "id": "R1-M5", "a": "SIVASUBRAMANIAN NP / BALU MAHI", "b": "HARIHARAN M / SV RAMACHANDRAN", "boards": [[0,28]] },
         { "id": "R1-M6", "a": "HARIHARAN / RAJAMANI", "b": "GANESH KRISHNA / GANAPATHY", "boards": [[0,1]] },
-        { "id": "R1-M7", "a": "MAHESH / MANIKUTTY", "b": "MOORTHY / SANGAMESWARAN", "boards": [(14,16]] },
+        { "id": "R1-M7", "a": "MAHESH / MANIKUTTY", "b": "MOORTHY / SANGAMESWARAN", "boards": [[14,16]] },
         { "id": "R1-M8", "a": "SUBRAMANIAN / HARIKRISHNAN S", "b": "VENKATESH R / NIVEDH", "boards": [[10,0]] }
       ]
     },
