@@ -8,49 +8,49 @@
     {
       "name": "Round 1",
       "matches": [
-        { "id": "M1", "a": "Thanmay", "b": "HARIDATH P", "boards": [] },
-        { "id": "M2", "a": "Vishnudev", "b": "Rithul. K", "boards": [] },
-        { "id": "M3", "a": "Sanchu", "b": "L.Adwaidmuthukrishnan", "boards": [] },
-        { "id": "M4", "a": "Viresh Balasubramanian R", "b": "Aayush Vijayan", "boards": [] },
-        { "id": "M5", "a": "Sreeram", "b": "Badrinath PB", "boards": [] },
-        { "id": "M6", "a": "Karthik", "b": "Akhilesh", "boards": [] },
-        { "id": "M7", "a": "Abhishek", "b": "RISHIKESH", "boards": [] },
-        { "id": "M8", "a": "Kailas", "b": "T. S. Sreehari", "boards": [] }
+        { "id": "M1", "a": "Thanmay", "b": "HARIDATH P", "boards": [[0,1]] },
+        { "id": "M2", "a": "Vishnudev", "b": "Rithul. K", "boards": [[7,12]] },
+        { "id": "M3", "a": "Sanchu", "b": "L.Adwaidmuthukrishnan", "boards": [[12,6]] },
+        { "id": "M4", "a": "Viresh Balasubramanian R", "b": "Aayush Vijayan", "boards": [[0,24]] },
+        { "id": "M5", "a": "Sreeram", "b": "Badrinath PB", "boards": [[13,11]] },
+        { "id": "M6", "a": "Karthik", "b": "Akhilesh", "boards": [[5,10]] },
+        { "id": "M7", "a": "Abhishek", "b": "RISHIKESH", "boards": [[1,0]] },
+        { "id": "M8", "a": "Kailas", "b": "T. S. Sreehari", "boards": [[0,19]] }
       ]
     },
     {
       "name": "Round of 16",
       "matches": [
-        { "id": "M9", "a": "P S Srinivasan", "b": "M1", "boards": [] },
-        { "id": "M10", "a": "G S Harinarayan", "b": "M2", "boards": [] },
-        { "id": "M11", "a": "Sreehari S", "b": "M3", "boards": [] },
-        { "id": "M12", "a": "Vaibhav", "b": "M4", "boards": [] },
-        { "id": "M13", "a": "Adwaid seshadri", "b": "M5", "boards": [] },
-        { "id": "M14", "a": "Arjith A", "b": "M6", "boards": [] },
-        { "id": "M15", "a": "Ramjith A", "b": "M7", "boards": [] },
-        { "id": "M16", "a": "Ramcharan", "b": "M8", "boards": [] }
+        { "id": "M9", "a": "P S Srinivasan", "b": "M1", "boards": [[26,0]] },
+        { "id": "M10", "a": "G S Harinarayan", "b": "M2", "boards": [[6,5]] },
+        { "id": "M11", "a": "Sreehari S", "b": "M3", "boards": [[0,1]] },
+        { "id": "M12", "a": "Vaibhav", "b": "M4", "boards": [[0,19]] },
+        { "id": "M13", "a": "Adwaid seshadri", "b": "M5", "boards": [[10,7]] },
+        { "id": "M14", "a": "Arjith A", "b": "M6", "boards": [[0,1]] },
+        { "id": "M15", "a": "Ramjith A", "b": "M7", "boards": [[0,1]] },
+        { "id": "M16", "a": "Ramcharan", "b": "M8", "boards": [[0,1]] }
       ]
     },
     {
       "name": "Quarter-Finals",
       "matches": [
-        { "id": "QF1", "a": "M9", "b": "M10", "boards": [] },
-        { "id": "QF2", "a": "M11", "b": "M12", "boards": [] },
-        { "id": "QF3", "a": "M13", "b": "M14", "boards": [] },
-        { "id": "QF4", "a": "M15", "b": "M16", "boards": [] }
+        { "id": "QF1", "a": "M9", "b": "M10", "boards": [[8,9]] },
+        { "id": "QF2", "a": "M11", "b": "M12", "boards": [[0,21]] },
+        { "id": "QF3", "a": "M13", "b": "M14", "boards": [[0,17]] },
+        { "id": "QF4", "a": "M15", "b": "M16", "boards": [[10,0] }
       ]
     },
     {
       "name": "Semi-Finals",
       "matches": [
-        { "id": "SF1", "a": "QF1", "b": "QF2", "boards": [] },
-        { "id": "SF2", "a": "QF3", "b": "QF4", "boards": [] }
+        { "id": "SF1", "a": "QF1", "b": "QF2", "boards": [[0,35]] },
+        { "id": "SF2", "a": "QF3", "b": "QF4", "boards": [[5,16]] }
       ]
     },
     {
       "name": "Final",
       "matches": [
-        { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [] }
+        { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [[21,5]] }
       ]
     }
   ]
