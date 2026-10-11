@@ -69,6 +69,11 @@
       "matches": [
         { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [[15,13]] }
       ]
+    },{
+      "name": "Looser Final",
+      "matches": [
+        { "id": "LOOSER_FINAL", "a": "K B Mahesh Kumar", "b": "Ram KV", "boards": [[8,9]] }
+      ]
     }
   ]
 }
