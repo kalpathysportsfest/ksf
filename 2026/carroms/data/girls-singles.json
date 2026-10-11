@@ -8,7 +8,7 @@
     {
       "name": "Final",
       "matches": [
-        { "id": "FINAL", "a": "LAKSHANA", "b": "ANANYA" }
+        { "id": "FINAL", "a": "LAKSHANA", "b": "ANANYA", "boards": [] }
       ]
     }
   ]
