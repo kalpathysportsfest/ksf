@@ -8,14 +8,14 @@
     {
       "name": "Semi-Finals",
       "matches": [
-        { "id": "SF1", "a": "SRI DHANYA / SAKTHI", "b": "SHANTHI / ANEESHA", "boards": [] },
-        { "id": "SF2", "a": "BHAVYA / SHYAMA", "b": "SEETHA / KAVITHA", "boards": [] }
+        { "id": "SF1", "a": "SRI DHANYA / SAKTHI", "b": "SHANTHI / ANEESHA", "boards": [[20,0]] },
+        { "id": "SF2", "a": "BHAVYA / SHYAMA", "b": "SEETHA / KAVITHA", "boards": [[13,8]] }
       ]
     },
     {
       "name": "Final",
       "matches": [
-        { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [] }
+        { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [[10,0]] }
       ]
     }
   ]
