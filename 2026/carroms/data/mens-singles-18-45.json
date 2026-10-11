@@ -74,10 +74,12 @@
 }
 
 
-/*{
-      "name": "Looser Final",
-      "matches": [
-        { "id": "LOOSER_FINAL", "a": "K B Mahesh Kumar", "b": "Ram KV", "boards": [[8,9]] }
-      ]
-    }
-*/
+//{
+//    "name": "Looser Final",
+//    "matches": [
+//     { "id": "LOOSER_FINAL", "a": "K B 
+//Mahesh Kumar", "b": "Ram KV", "boards": 
+//[[8,9]] }
+//      ]
+//   }
+//
