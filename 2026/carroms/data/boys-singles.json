@@ -52,6 +52,11 @@
       "matches": [
         { "id": "FINAL", "a": "SF1", "b": "SF2", "boards": [[21,5]] }
       ]
+    },{
+      "name": "Loser Final",
+      "matches": [
+        { "id": "LOSERS FINAL", "a": "Akhilesh", "b": "Harinarayanan", "boards": [[10,6]] }
+      ]
     }
   ]
 }
