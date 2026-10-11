@@ -25,14 +25,14 @@
         { "id": "M6", "a": "Navaneeth", "b": "R V ESWARAN", "boards": [[0,1]] },
         { "id": "M7", "a": "Vishal", "b": "Hariharan. N. P", "boards": [[1,0]] },
         { "id": "M8", "a": "Yogesh TS", "b": "Hariharan M", "boards": [[0,1]] },
-        { "id": "M9", "a": "Balu", "b": "VIVEK", "boards": [[0,1]] },
+        { "id": "M9", "a": "Balu", "b": "VIVEK", "boards": [[1,0]] },
         { "id": "M10", "a": "Balachandar M", "b": "Mahadevan(Mahesh)", "boards": [[0,1]] },
         { "id": "M11", "a": "Sivasubramanian N P", "b": "Venkiteswaran K", "boards": [[29,0]] },
         { "id": "M12", "a": "Ram K V", "b": "Ramaswamy Mathur", "boards": [[12,6]] },
         { "id": "M13", "a": "Gokul Iyer", "b": "Arun", "boards": [[0,24]] },
         { "id": "M14", "a": "Anand S", "b": "Manikandan M", "boards": [[13,0],[13,0],[3,0]] },
         { "id": "M15", "a": "P1", "b": "P2", "boards": [[1,0]] },
-        { "id": "M16", "a": "P3", "b": "P4", "boards": [[25,0]] }
+        { "id": "M16", "a": "P3", "b": "P4", "boards": [[0,25]] }
       ]
     },
     {
